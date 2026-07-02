@@ -1,0 +1,922 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "QuantDesk API",
+    "version": "2.0.0",
+    "description": "Public HTTP API for the QuantDesk perpetual DEX gateway. Endpoints are grouped by market data, unified portfolio state, oracle pricing, social surfaces, backtesting, and reference data. Field-level truth for on-chain accounts lives in the SDK; this reference documents the REST gateway surface.\n\nAuthenticated routes accept a Bearer JWT obtained from the wallet session flow described in the Authentication guide.",
+    "contact": {
+      "name": "QuantDesk Support",
+      "url": "https://docs.quantdesk.app",
+      "email": "support@quantdesk.app"
+    },
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.quantdesk.app",
+      "description": "Production gateway"
+    }
+  ],
+  "security": [],
+  "tags": [
+    { "name": "Markets", "description": "Market registry, metadata, and crankless orderbook depth." },
+    { "name": "Oracle", "description": "Price feeds sourced from the Pyth oracle network." },
+    { "name": "Portfolio", "description": "Unified portfolio state aggregated from on-chain accounts." },
+    { "name": "Data", "description": "Authoritative market statistics and historical OHLCV candles." },
+    { "name": "Social", "description": "Leaderboard and verified proof (flex) cards." },
+    { "name": "Backtesting", "description": "Strategy simulation lifecycle and dataset catalog." },
+    { "name": "Referrals", "description": "Referral validation before on-chain assignment." }
+  ],
+  "paths": {
+    "/api/v2/markets": {
+      "get": {
+        "tags": ["Markets"],
+        "summary": "List markets",
+        "description": "Returns the market registry, optionally filtered by asset class. The registry is the single source of truth for symbols, oracle feeds, and leverage caps.",
+        "operationId": "listMarkets",
+        "parameters": [
+          {
+            "name": "asset_class",
+            "in": "query",
+            "required": false,
+            "description": "Filter markets by asset class.",
+            "schema": {
+              "type": "string",
+              "enum": ["crypto", "index"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Market list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Market" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/markets/{symbol}": {
+      "get": {
+        "tags": ["Markets"],
+        "summary": "Get market metadata",
+        "description": "Returns full registry metadata for a single market symbol.",
+        "operationId": "getMarket",
+        "parameters": [
+          {
+            "name": "symbol",
+            "in": "path",
+            "required": true,
+            "description": "Market symbol, e.g. `SOL-PERP`.",
+            "schema": { "type": "string", "example": "SOL-PERP" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Market metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": { "$ref": "#/components/schemas/Market" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown symbol",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/markets/leverage-tiers": {
+      "get": {
+        "tags": ["Markets"],
+        "summary": "Get leverage tiers",
+        "description": "Returns per-asset-class leverage caps used for margin checks.",
+        "operationId": "getLeverageTiers",
+        "responses": {
+          "200": {
+            "description": "Leverage tiers by asset class",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "asset_class": { "type": "string", "example": "crypto" },
+                          "max_leverage": { "type": "number", "example": 50 }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/markets/orderbook/{market}": {
+      "get": {
+        "tags": ["Markets"],
+        "summary": "Get orderbook depth",
+        "description": "Returns global orderbook depth for a market symbol. The gateway serves a hot cache first and falls back to a snapshot table when the cache is cold.",
+        "operationId": "getOrderbook",
+        "parameters": [
+          {
+            "name": "market",
+            "in": "path",
+            "required": true,
+            "description": "Market symbol, e.g. `SOL-PERP`.",
+            "schema": { "type": "string", "example": "SOL-PERP" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Orderbook depth",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "source": {
+                      "type": "string",
+                      "description": "Whether depth came from the hot cache or a fallback snapshot.",
+                      "enum": ["cache", "snapshot"],
+                      "example": "cache"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "bids": {
+                          "type": "array",
+                          "items": { "$ref": "#/components/schemas/OrderbookLevel" }
+                        },
+                        "asks": {
+                          "type": "array",
+                          "items": { "$ref": "#/components/schemas/OrderbookLevel" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/oracle/prices": {
+      "get": {
+        "tags": ["Oracle"],
+        "summary": "Get oracle prices",
+        "description": "Returns current normalized prices from the Pyth oracle feeds as a symbol-to-price map.",
+        "operationId": "getOraclePrices",
+        "responses": {
+          "200": {
+            "description": "Oracle price map",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "object",
+                      "additionalProperties": { "type": "number" },
+                      "example": { "SOL-PERP": 168.42, "BTC-PERP": 64210.5 }
+                    },
+                    "timestamp": { "type": "number", "example": 1767394200000 },
+                    "source": { "type": "string", "example": "pyth" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/portfolio": {
+      "get": {
+        "tags": ["Portfolio"],
+        "summary": "Get unified portfolio",
+        "description": "Returns the full unified portfolio for the authenticated wallet: balances, positions, and open orders in one payload. For lowest latency, parse the on-chain portfolio account buffer directly via RPC.",
+        "operationId": "getPortfolio",
+        "security": [{ "BearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "Unified portfolio",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": { "$ref": "#/components/schemas/Portfolio" }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or expired auth",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          },
+          "404": {
+            "description": "Wallet has not initialized a portfolio yet (`PORTFOLIO_NOT_FOUND`)",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/portfolio/positions": {
+      "get": {
+        "tags": ["Portfolio"],
+        "summary": "Get portfolio positions",
+        "description": "Returns the positions slice of the unified portfolio for the authenticated wallet.",
+        "operationId": "getPortfolioPositions",
+        "security": [{ "BearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "Positions slice",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Position" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or expired auth",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/portfolio/orders": {
+      "get": {
+        "tags": ["Portfolio"],
+        "summary": "Get portfolio open orders",
+        "description": "Returns the open orders slice of the unified portfolio for the authenticated wallet.",
+        "operationId": "getPortfolioOrders",
+        "security": [{ "BearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "Open orders slice",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Order" }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or expired auth",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/market-stats": {
+      "get": {
+        "tags": ["Data"],
+        "summary": "Get market stats snapshot",
+        "description": "Returns an authoritative snapshot of last price, 24h change, volume, and open interest for a symbol. Pair with the market stats websocket event for live UI refresh.",
+        "operationId": "getMarketStats",
+        "parameters": [
+          {
+            "name": "symbol",
+            "in": "query",
+            "required": true,
+            "description": "Market symbol, e.g. `SOL-PERP`.",
+            "schema": { "type": "string", "example": "SOL-PERP" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Market stats snapshot",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "symbol": { "type": "string", "example": "SOL-PERP" },
+                        "last_price": { "type": "number", "example": 168.42 },
+                        "change_24h": { "type": "number", "example": -1.87 },
+                        "volume_24h": { "type": "number", "example": 12930450.5 },
+                        "open_interest": { "type": "number", "example": 4820100.0 }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/candles": {
+      "get": {
+        "tags": ["Data"],
+        "summary": "Get historical candles",
+        "description": "Returns historical OHLCV candles for a symbol and resolution.",
+        "operationId": "getCandles",
+        "parameters": [
+          {
+            "name": "symbol",
+            "in": "query",
+            "required": true,
+            "description": "Market symbol, e.g. `SOL-PERP`.",
+            "schema": { "type": "string", "example": "SOL-PERP" }
+          },
+          {
+            "name": "resolution",
+            "in": "query",
+            "required": true,
+            "description": "Candle resolution.",
+            "schema": {
+              "type": "string",
+              "enum": ["1m", "5m", "15m", "1h", "4h", "1d"],
+              "example": "1h"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OHLCV candles",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Candle" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/leaderboard": {
+      "get": {
+        "tags": ["Social"],
+        "summary": "Get leaderboard",
+        "description": "Ranks active vault leaders by realized P&L. Rows linked to a published flex card also include verification badges; rows without linkage omit badges — rank alone is not verification.",
+        "operationId": "getLeaderboard",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Page size.",
+            "schema": { "type": "integer", "default": 10, "example": 5 }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "description": "Pagination offset.",
+            "schema": { "type": "integer", "default": 0, "example": 0 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Leaderboard rows",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/LeaderboardRow" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/social/flex-cards": {
+      "post": {
+        "tags": ["Social"],
+        "summary": "Publish flex card",
+        "description": "Publishes a verified proof (flex) card from a completed backtest that passed the deploy gate. A failed gate returns `403 DEPLOY_GATE_FAILED`.",
+        "operationId": "publishFlexCard",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["run_id", "title"],
+                "properties": {
+                  "run_id": {
+                    "type": "string",
+                    "description": "Completed backtest run that passed the deploy gate.",
+                    "example": "b4f1c2a0-6d3e-4f7a-9c1b-0a2d3e4f5a6b"
+                  },
+                  "title": {
+                    "type": "string",
+                    "description": "Display title (max 120 characters).",
+                    "maxLength": 120,
+                    "example": "BTC MR — verified"
+                  },
+                  "description": {
+                    "type": "string",
+                    "description": "Optional blurb.",
+                    "example": "Mean-reversion strategy, 90-day backtest."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Flex card created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": { "$ref": "#/components/schemas/FlexCard" }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or expired auth",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          },
+          "403": {
+            "description": "Deploy gate not passed (`DEPLOY_GATE_FAILED`)",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/social/flex-cards/{flex_card_id}": {
+      "get": {
+        "tags": ["Social"],
+        "summary": "Get flex card",
+        "description": "Returns a published verified proof (flex) card.",
+        "operationId": "getFlexCard",
+        "parameters": [
+          {
+            "name": "flex_card_id",
+            "in": "path",
+            "required": true,
+            "description": "Flex card identifier.",
+            "schema": { "type": "string", "example": "fc_9x2k1" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Flex card",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": { "$ref": "#/components/schemas/FlexCard" }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown flex card",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/backtest/datasets": {
+      "get": {
+        "tags": ["Backtesting"],
+        "summary": "List backtest datasets",
+        "description": "Returns the dataset catalog available for strategy simulation.",
+        "operationId": "listBacktestDatasets",
+        "responses": {
+          "200": {
+            "description": "Dataset catalog",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "dataset_id": { "type": "string", "example": "sol-perp-1h-2025" },
+                          "version": { "type": "string", "example": "1.2.0" },
+                          "symbol": { "type": "string", "example": "SOL-PERP" },
+                          "resolution": { "type": "string", "example": "1h" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/backtest/runs": {
+      "post": {
+        "tags": ["Backtesting"],
+        "summary": "Submit backtest run",
+        "description": "Submits a strategy simulation job. Fees, slippage, and funding assumptions are required so results are reproducible and gate-eligible.",
+        "operationId": "submitBacktestRun",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["dataset_id", "strategy", "fees", "slippage", "funding"],
+                "properties": {
+                  "dataset_id": { "type": "string", "example": "sol-perp-1h-2025" },
+                  "strategy": {
+                    "type": "object",
+                    "description": "Strategy card definition.",
+                    "additionalProperties": true
+                  },
+                  "fees": { "type": "number", "description": "Taker fee assumption (bps).", "example": 5 },
+                  "slippage": { "type": "number", "description": "Slippage assumption (bps).", "example": 3 },
+                  "funding": { "type": "boolean", "description": "Apply funding to the simulation.", "example": true }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Run accepted and queued",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "run_id": { "type": "string", "example": "b4f1c2a0-6d3e-4f7a-9c1b-0a2d3e4f5a6b" },
+                        "status": { "type": "string", "example": "queued" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or expired auth",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/backtest/runs/{id}": {
+      "get": {
+        "tags": ["Backtesting"],
+        "summary": "Get backtest run",
+        "description": "Returns run metrics and performance telemetry, including the Deflated Sharpe Ratio (DSR).",
+        "operationId": "getBacktestRun",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Backtest run identifier.",
+            "schema": { "type": "string", "example": "b4f1c2a0-6d3e-4f7a-9c1b-0a2d3e4f5a6b" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Run metrics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "run_id": { "type": "string", "example": "b4f1c2a0-6d3e-4f7a-9c1b-0a2d3e4f5a6b" },
+                        "status": { "type": "string", "example": "completed" },
+                        "sharpe": { "type": "number", "example": 1.84 },
+                        "dsr": { "type": "number", "example": 0.72 },
+                        "max_drawdown": { "type": "number", "example": -0.14 }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown run",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/referrals/validate": {
+      "post": {
+        "tags": ["Referrals"],
+        "summary": "Validate referrer",
+        "description": "Checks whether assigning a referrer would create a circular loop before you submit an on-chain `SetReferrer` transaction.",
+        "operationId": "validateReferral",
+        "security": [{ "BearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["referrerAddress"],
+                "properties": {
+                  "referrerAddress": {
+                    "type": "string",
+                    "description": "Candidate referrer wallet public key.",
+                    "example": "9xQeWvG816bUx9EPjHmaT23yvVM2ZWbrrpZb9PusVFin"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Validation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean", "example": true },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "isLoop": {
+                          "type": "boolean",
+                          "description": "`true` means the referral is rejected (circular chain detected); `false` means it is safe to proceed on-chain.",
+                          "example": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or expired auth",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Bearer JWT obtained from the wallet session flow. See the Authentication guide."
+      }
+    },
+    "schemas": {
+      "Market": {
+        "type": "object",
+        "properties": {
+          "symbol": { "type": "string", "example": "SOL-PERP" },
+          "base_asset": { "type": "string", "example": "SOL" },
+          "quote_asset": { "type": "string", "example": "USD" },
+          "asset_class": { "type": "string", "example": "crypto" },
+          "max_leverage": { "type": "number", "example": 50 },
+          "is_active": { "type": "boolean", "example": true },
+          "oracle_feed": { "type": "string", "example": "pyth:SOL/USD" }
+        }
+      },
+      "OrderbookLevel": {
+        "type": "object",
+        "properties": {
+          "price": { "type": "number", "example": 168.40 },
+          "size": { "type": "number", "example": 125.5 }
+        }
+      },
+      "Position": {
+        "type": "object",
+        "properties": {
+          "market": { "type": "string", "example": "SOL-PERP" },
+          "side": { "type": "string", "enum": ["long", "short"], "example": "long" },
+          "size": { "type": "number", "example": 12.5 },
+          "entry_price": { "type": "number", "example": 160.10 },
+          "current_price": { "type": "number", "example": 168.42 },
+          "unrealized_pnl": { "type": "number", "example": 104.0 },
+          "leverage": { "type": "number", "example": 5 }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "example": "ord_1a2b3c" },
+          "market": { "type": "string", "example": "SOL-PERP" },
+          "side": { "type": "string", "enum": ["buy", "sell"], "example": "buy" },
+          "type": { "type": "string", "enum": ["limit", "market"], "example": "limit" },
+          "price": { "type": "number", "example": 165.0 },
+          "size": { "type": "number", "example": 10.0 },
+          "status": { "type": "string", "example": "open" }
+        }
+      },
+      "Portfolio": {
+        "type": "object",
+        "properties": {
+          "balances": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "asset": { "type": "string", "example": "USDC" },
+                "amount": { "type": "number", "example": 5000.0 }
+              }
+            }
+          },
+          "positions": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Position" }
+          },
+          "orders": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Order" }
+          }
+        }
+      },
+      "Candle": {
+        "type": "object",
+        "properties": {
+          "time": { "type": "integer", "description": "Unix timestamp (ms).", "example": 1767394200000 },
+          "open": { "type": "number", "example": 167.9 },
+          "high": { "type": "number", "example": 169.4 },
+          "low": { "type": "number", "example": 167.1 },
+          "close": { "type": "number", "example": 168.42 },
+          "volume": { "type": "number", "example": 452100.0 }
+        }
+      },
+      "LeaderboardRow": {
+        "type": "object",
+        "properties": {
+          "vault_address": { "type": "string", "example": "7Np41oeYqPefeNQEHSv1UDhYrehxin3NStELsSKCT4K2" },
+          "leader": { "type": "string", "example": "quant_owl" },
+          "total_pnl": { "type": "number", "example": 128400.5 },
+          "strategy": { "type": "string", "example": "mean-reversion" },
+          "is_active": { "type": "boolean", "example": true },
+          "flex_card_id": { "type": "string", "example": "fc_9x2k1" },
+          "run_id": { "type": "string", "example": "b4f1c2a0-6d3e-4f7a-9c1b-0a2d3e4f5a6b" },
+          "badges": {
+            "type": "array",
+            "description": "Server-computed proof labels. Present only for rows linked to a verified flex card.",
+            "items": { "type": "string" },
+            "example": ["gate-verified", "live-tracked"]
+          }
+        }
+      },
+      "FlexCard": {
+        "type": "object",
+        "properties": {
+          "flex_card_id": { "type": "string", "example": "fc_9x2k1" },
+          "run_id": { "type": "string", "example": "b4f1c2a0-6d3e-4f7a-9c1b-0a2d3e4f5a6b" },
+          "title": { "type": "string", "example": "BTC MR — verified" },
+          "description": { "type": "string", "example": "Mean-reversion strategy, 90-day backtest." },
+          "badges": {
+            "type": "array",
+            "items": { "type": "string" },
+            "example": ["gate-verified"]
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "success": { "type": "boolean", "example": false },
+          "error": { "type": "string", "example": "PORTFOLIO_NOT_FOUND" },
+          "code": { "type": "string", "example": "PORTFOLIO_NOT_FOUND" },
+          "message": { "type": "string", "example": "Wallet has not initialized a V2 portfolio yet." },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "request_id": { "type": "string", "example": "req_8f2a1c" }
+        }
+      }
+    }
+  }
+}

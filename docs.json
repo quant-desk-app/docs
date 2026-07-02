@@ -173,6 +173,80 @@
         ]
       },
       {
+        "tab": "API Reference",
+        "openapi": "openapi.json",
+        "groups": [
+          {
+            "group": "API documentation",
+            "icon": "book-open",
+            "expanded": true,
+            "pages": [
+              "docs/api-reference/introduction"
+            ]
+          },
+          {
+            "group": "Markets",
+            "icon": "chart-line",
+            "expanded": true,
+            "pages": [
+              "GET /api/v2/markets",
+              "GET /api/v2/markets/{symbol}",
+              "GET /api/v2/markets/leverage-tiers",
+              "GET /api/v2/markets/orderbook/{market}"
+            ]
+          },
+          {
+            "group": "Oracle",
+            "icon": "gauge-high",
+            "pages": [
+              "GET /api/oracle/prices"
+            ]
+          },
+          {
+            "group": "Portfolio",
+            "icon": "wallet",
+            "pages": [
+              "GET /api/v2/portfolio",
+              "GET /api/v2/portfolio/positions",
+              "GET /api/v2/portfolio/orders"
+            ]
+          },
+          {
+            "group": "Data",
+            "icon": "database",
+            "pages": [
+              "GET /api/v2/market-stats",
+              "GET /api/v2/candles"
+            ]
+          },
+          {
+            "group": "Social",
+            "icon": "users",
+            "pages": [
+              "GET /api/v2/leaderboard",
+              "POST /api/v2/social/flex-cards",
+              "GET /api/v2/social/flex-cards/{flex_card_id}"
+            ]
+          },
+          {
+            "group": "Backtesting",
+            "icon": "flask",
+            "pages": [
+              "GET /api/v2/backtest/datasets",
+              "POST /api/v2/backtest/runs",
+              "GET /api/v2/backtest/runs/{id}"
+            ]
+          },
+          {
+            "group": "Referrals",
+            "icon": "share-nodes",
+            "pages": [
+              "POST /api/v2/referrals/validate"
+            ]
+          }
+        ]
+      },
+      {
         "tab": "Resources",
         "groups": [
           {
