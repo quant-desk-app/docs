@@ -72,4 +72,4 @@ Convenience scripts for standing up a local development environment (SVM testing
 
 - [Developer quickstart](../developers/quickstart) — health check, Swagger, first `curl`
 - [Building on QuantDesk](../developers/building-on-quantdesk) — `place_order_v2` on-chain tutorial
-- [Contributing](../community/contributing) — submit your own strategy examples
+- [Contributing](../developers/submit-strategy-example) — submit your own strategy examples

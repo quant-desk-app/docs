@@ -5,16 +5,17 @@ description: "Entry point for QuantDesk docs covering product overview, trading 
 
 # QuantDesk docs
 
-Documentation for **product**, **guides**, and **developers** — similar in spirit to strong platforms (clear product story first, then deep guides, then API truth in Swagger). Internal engineering notes stay in the repo root under `docs/`.
+Documentation for **product**, **guides**, and **developers** — similar in spirit to strong platforms (clear product story first, then deep guides, then API truth in Swagger).
 
 ## How this site is organized
 
 ### 1 — Product and vision
 
-**What we’re building, what’s broken in crypto finance we care about, and how QuantDesk fits.**
+**What we're building, what’s broken in crypto finance we care about, and how QuantDesk fits.**
 
 Start here:
 
+- [SDK architecture tour](./overview/sdk-architecture-tour) — public repo layout (`idl/`, `typescript/`, `examples/`, `scripts/`)
 - [What is QuantDesk?](./overview/what-is-quantdesk) — problem, gap, direction  
 - [Features and tools](./overview/features-and-tools) — capability map with honest status labels  
 - [Visual product tour](./overview/visual-product-tour) — screenshot placeholders (swap in real captures later)  
@@ -27,6 +28,7 @@ Start here:
 
 - [Start in 5 minutes](./getting-started/start-trading-in-5-minutes)  
 - [Trading](./trading/overview) — Lite/Pro, orders, book, shortcuts  
+- [Data plane](./data/overview) — market stats, candles, news, social feed APIs  
 - [Social](./social/overview) — product direction, labeled honestly  
 - [Security and trust](./security/overview)  
 - [FAQ hub](./faq/index) — [Wallet & network](./faq/wallet-and-network), [Orders & risk](./faq/orders-risk-and-fees)  
@@ -36,6 +38,7 @@ Start here:
 **Integrate like Coinbase-style dev docs: quick path first, then schema in Swagger.**
 
 - [Developer quickstart](./developers/quickstart) — `curl`, Swagger, first API call  
+- [Contributing](./developers/submit-strategy-example) — submit strategy examples to the public SDK repo  
 - [Authentication](./developers/authentication)  
 - [API overview](./developers/api-overview)  
 - Swagger UI: `$QD_API/api/docs/` (set `QD_API` to your gateway origin; same path on your deployed API origin)  
@@ -46,9 +49,10 @@ Start here:
 
 | Lane | Start |
 | --- | --- |
-| **I’m evaluating the product** | [What is QuantDesk?](./overview/what-is-quantdesk) → [Features and tools](./overview/features-and-tools) |
+| **I'm evaluating the product** | [What is QuantDesk?](./overview/what-is-quantdesk) → [Features and tools](./overview/features-and-tools) |
 | **I want to trade** | [Start in 5 minutes](./getting-started/start-trading-in-5-minutes) → [Trading overview](./trading/overview) |
-| **I’m integrating / automating** | [Developer quickstart](./developers/quickstart) |
+| **I'm integrating / automating** | [SDK architecture tour](./overview/sdk-architecture-tour) → [Developer quickstart](./developers/quickstart) |
+| **I'm contributing code** | [Contributing](./developers/submit-strategy-example) |
 
 ## What this site optimizes for
 

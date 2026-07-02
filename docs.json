@@ -8,90 +8,121 @@
     "dark": "#9fec16"
   },
   "favicon": "/logo.svg",
+  "redirects": [
+    {
+      "source": "/docs/community/contributing",
+      "destination": "/docs/developers/submit-strategy-example"
+    }
+  ],
+  "navbar": {
+    "links": [
+      {
+        "label": "App",
+        "href": "https://quantdesk.app"
+      },
+      {
+        "type": "github",
+        "href": "https://github.com/quant-desk-app/quantdesk-sdk"
+      }
+    ]
+  },
   "navigation": {
     "groups": [
       {
-        "group": "Overview",
+        "group": "Product & guides",
         "pages": [
-          "docs/intro",
-          "docs/overview/sdk-architecture-tour",
-          "docs/overview/what-is-quantdesk",
-          "docs/overview/unified-portfolio",
-          "docs/overview/features-and-tools",
-          "docs/overview/visual-product-tour",
-          "docs/overview/why-quantdesk",
-          "docs/overview/uniques-and-roadmap",
-          "docs/overview/docs-philosophy"
+          {
+            "group": "Overview",
+            "expanded": true,
+            "pages": [
+              "docs/intro",
+              "docs/overview/sdk-architecture-tour",
+              "docs/overview/what-is-quantdesk",
+              "docs/overview/unified-portfolio",
+              "docs/overview/features-and-tools",
+              "docs/overview/visual-product-tour",
+              "docs/overview/why-quantdesk",
+              "docs/overview/uniques-and-roadmap",
+              "docs/overview/docs-philosophy"
+            ]
+          },
+          {
+            "group": "Getting started",
+            "expanded": true,
+            "pages": [
+              "docs/getting-started/start-trading-in-5-minutes"
+            ]
+          },
+          {
+            "group": "Trading Terminal",
+            "expanded": false,
+            "pages": [
+              "docs/trading/overview",
+              "docs/trading/perp-market-coverage",
+              "docs/trading/lite-vs-pro",
+              "docs/trading/order-entry",
+              "docs/trading/order-book",
+              "docs/trading/terminal-shortcuts"
+            ]
+          },
+          {
+            "group": "Data Plane",
+            "expanded": false,
+            "pages": [
+              "docs/data/overview",
+              "docs/data/data-sources",
+              "docs/data/refresh-rates"
+            ]
+          },
+          {
+            "group": "Social Surfaces",
+            "expanded": false,
+            "pages": [
+              "docs/social/overview",
+              "docs/social/verified-flex-charter",
+              "docs/social/proof-badges",
+              "docs/social/x-stream",
+              "docs/social/copy-trading",
+              "docs/social/strategy-collaboration"
+            ]
+          },
+          {
+            "group": "Security and trust",
+            "expanded": false,
+            "pages": [
+              "docs/security/overview",
+              "docs/security/protocol-and-fairness",
+              "docs/security/fees-and-fairness"
+            ]
+          },
+          {
+            "group": "FAQ",
+            "expanded": false,
+            "pages": [
+              "docs/faq/index",
+              "docs/faq/wallet-and-network",
+              "docs/faq/orders-risk-and-fees"
+            ]
+          }
         ]
       },
       {
-        "group": "Community & Contributing",
+        "group": "Developers",
         "pages": [
-          "docs/community/contributing"
-        ]
-      },
-      {
-        "group": "Getting started",
-        "pages": [
-          "docs/getting-started/start-trading-in-5-minutes"
-        ]
-      },
-      {
-        "group": "Developers (SDK & APIs)",
-        "pages": [
-          "docs/developers/quickstart",
-          "docs/developers/portfolio-parsing",
-          "docs/developers/building-on-quantdesk",
-          "docs/developers/authentication",
-          "docs/developers/api-overview",
-          "docs/developers/websocket-overview",
-          "docs/developers/errors-and-rate-limits"
-        ]
-      },
-      {
-        "group": "Trading Terminal",
-        "pages": [
-          "docs/trading/overview",
-          "docs/trading/perp-market-coverage",
-          "docs/trading/lite-vs-pro",
-          "docs/trading/order-entry",
-          "docs/trading/order-book",
-          "docs/trading/terminal-shortcuts"
-        ]
-      },
-      {
-        "group": "Data Plane",
-        "pages": [
-          "docs/data/overview",
-          "docs/data/data-sources",
-          "docs/data/refresh-rates"
-        ]
-      },
-      {
-        "group": "Social Surfaces",
-        "pages": [
-          "docs/social/overview",
-          "docs/social/verified-flex-charter",
-          "docs/social/proof-badges",
-          "docs/social/x-stream",
-          "docs/social/copy-trading",
-          "docs/social/strategy-collaboration"
-        ]
-      },
-      {
-        "group": "Security and trust",
-        "pages": [
-          "docs/security/overview",
-          "docs/security/protocol-and-fairness",
-          "docs/security/fees-and-fairness"
-        ]
-      },
-      {
-        "group": "FAQ",
-        "pages": [
-          "docs/faq/index",
-          "docs/faq/wallet-and-network",
-          "docs/faq/orders-risk-and-fees"
+          {
+            "group": "SDK & APIs",
+            "expanded": false,
+            "pages": [
+              "docs/developers/quickstart",
+              "docs/developers/portfolio-parsing",
+              "docs/developers/building-on-quantdesk",
+              "docs/developers/submit-strategy-example",
+              "docs/developers/authentication",
+              "docs/developers/api-overview",
+              "docs/developers/websocket-overview",
+              "docs/developers/errors-and-rate-limits"
+            ]
+          }
         ]
       }
     ]
