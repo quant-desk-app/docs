@@ -16,26 +16,16 @@ pnpm install
 pnpm run dev
 ```
 
-## Service ports
-
-| Service | Port |
-| --- | --- |
-| Frontend | 3001 |
-| Backend API | 3002 |
-| MIKEY-AI | 3000 |
-| Data ingestion | 3003 |
-
 ## First session
 
-1. Open `http://localhost:3001`
-2. Connect a supported Solana wallet
-3. Stay on devnet while testing
-4. Review trading pages before placing larger size
+1. Set up your local client environment following the instructions in the SDK README.
+2. Connect a supported Solana wallet.
+3. Stay on devnet while testing.
+4. Review trading parameters before placing larger size.
 
 ## Wallet and network pitfalls
 
 - **Wrong cluster** — If the wallet is on mainnet but the app expects devnet (or the reverse), signing will fail. Align wallet cluster with your session.  
 - **Expired session** — Reconnect wallet or refresh if API calls start returning 401.  
-- **Local API down** — Frontend may load while [`/health`](http://localhost:3002/health) fails; fix backend first.
 
 More: [Wallet and network FAQ](../faq/wallet-and-network).

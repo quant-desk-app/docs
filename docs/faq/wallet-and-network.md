@@ -19,7 +19,7 @@ Use a **supported Solana wallet** that you trust (Phantom, Solflare, etc.). Quan
 ## I connected but nothing loads
 
 1. Confirm backend + frontend are running (see [Start in 5 minutes](../getting-started/start-trading-in-5-minutes)).  
-2. Hit API health: `curl http://localhost:3002/health` when developing locally.  
+2. Hit API health: `curl $QD_API/health` when developing locally (set `QD_API` to your gateway origin).  
 3. Try disconnect/reconnect wallet and hard refresh once.
 
 ## Wrong network in wallet

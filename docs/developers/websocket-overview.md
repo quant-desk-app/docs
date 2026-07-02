@@ -5,7 +5,7 @@ description: "How QuantDesk streams market, order, and position updates over Soc
 
 # WebSockets overview
 
-QuantDesk’s backend exposes **real-time** updates via **Socket.IO** on the same HTTP server as the REST API (default local gateway **`http://localhost:3002`** unless your deployment differs).
+QuantDesk’s backend exposes **real-time** updates via **Socket.IO** on the same HTTP server as the REST API (same gateway origin as your `QD_API`, whatever your deployment uses).
 
 ## Conceptual model
 

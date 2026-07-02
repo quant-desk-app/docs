@@ -13,6 +13,7 @@
       "group": "Overview",
       "pages": [
         "docs/intro",
+        "docs/overview/sdk-architecture-tour",
         "docs/overview/what-is-quantdesk",
         "docs/overview/unified-portfolio",
         "docs/overview/features-and-tools",
@@ -23,11 +24,31 @@
       ]
     },
     {
-      "group": "Getting started",
-      "pages": ["docs/getting-started/start-trading-in-5-minutes"]
+      "group": "Community & Contributing",
+      "pages": [
+        "docs/community/contributing"
+      ]
     },
     {
-      "group": "Trading",
+      "group": "Getting started",
+      "pages": [
+        "docs/getting-started/start-trading-in-5-minutes"
+      ]
+    },
+    {
+      "group": "Developers (SDK & APIs)",
+      "pages": [
+        "docs/developers/quickstart",
+        "docs/developers/portfolio-parsing",
+        "docs/developers/building-on-quantdesk",
+        "docs/developers/authentication",
+        "docs/developers/api-overview",
+        "docs/developers/websocket-overview",
+        "docs/developers/errors-and-rate-limits"
+      ]
+    },
+    {
+      "group": "Trading Terminal",
       "pages": [
         "docs/trading/overview",
         "docs/trading/perp-market-coverage",
@@ -38,7 +59,7 @@
       ]
     },
     {
-      "group": "Data",
+      "group": "Data Plane",
       "pages": [
         "docs/data/overview",
         "docs/data/data-sources",
@@ -46,25 +67,14 @@
       ]
     },
     {
-      "group": "Social",
+      "group": "Social Surfaces",
       "pages": [
         "docs/social/overview",
-        "docs/social/x-stream",
         "docs/social/verified-flex-charter",
         "docs/social/proof-badges",
+        "docs/social/x-stream",
         "docs/social/copy-trading",
         "docs/social/strategy-collaboration"
-      ]
-    },
-    {
-      "group": "Developers",
-      "pages": [
-        "docs/developers/quickstart",
-        "docs/developers/portfolio-parsing",
-        "docs/developers/authentication",
-        "docs/developers/api-overview",
-        "docs/developers/websocket-overview",
-        "docs/developers/errors-and-rate-limits"
       ]
     },
     {

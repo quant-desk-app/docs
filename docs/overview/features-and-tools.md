@@ -14,8 +14,8 @@ High-level map of what QuantDesk offers. **Status** reflects how we label capabi
 | **Market & oracle data** | Integrated price/market context via backend and oracle paths | Shipped |
 | **Backend gateway** | REST APIs, Swagger at `/api/docs/`, dev assistance routes for structure and market summary | Shipped |
 | **Auth model** | Wallet + SIWS-style flows; API auth per route in Swagger | Shipped |
-| **AI / assistance** | MIKEY-AI (protocol intel); Elena Conductor (backtest only) | MIKEY shipped prototype; Elena **shipped** — [Elena & backtesting](../developers/elena-backtesting) |
-| **Backtesting** | Dataset catalog, Python sim, deploy gate, DSR | **Shipped** (Epic 12) — Pro `BT`, Lite `elena` tab |
+| **Strategy Validation** | Local SVM testnets and simulator wrappers | Shipped (via scripts and examples) |
+| **Backtesting** | Dataset catalog and metrics (Sharpe, Sortino, DSR) | Shipped (via API endpoints) |
 | **Unified markets** | Registry SSOT, crypto + index pilots (`US500`/`US100`) | **Shipped** (Epic 14) — [Perp market coverage](../trading/perp-market-coverage) |
 | **Data plane** | Market stats, candles, news, reference feeds, collector health | **Shipped** (Epic 15) — [Data overview](../data/overview) |
 | **X stream** | Social feed + alerts via `x-stream/` | **Shipped** (Epic 16) — [X stream](../social/x-stream) |
