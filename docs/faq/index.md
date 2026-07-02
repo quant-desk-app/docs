@@ -1,5 +1,6 @@
 ---
 title: "QuantDesk FAQ hub: custody, devnet, schemas"
+sidebarTitle: "FAQ hub"
 description: "Central FAQ index for QuantDesk covering custody, devnet usage, Swagger schema truth, WebSocket updates, and HTTP 429 rate limit handling for traders."
 ---
 

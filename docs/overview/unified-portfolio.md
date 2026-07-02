@@ -1,5 +1,6 @@
 ---
 title: "Unified zero-copy portfolio architecture in V2"
+sidebarTitle: "Unified portfolio"
 description: "How QuantDesk V2 consolidates balances, positions, and orders into one zero-copy PortfolioAccount PDA for sub-millisecond reads and atomic execution."
 ---
 

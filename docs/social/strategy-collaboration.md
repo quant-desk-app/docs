@@ -1,5 +1,6 @@
 ---
 title: "Strategy collaboration spaces for trading teams"
+sidebarTitle: "Collaboration"
 description: "Planned QuantDesk surfaces for teams to align on thesis, share watchlists, and coordinate review cycles around setups without giving execution advice."
 ---
 

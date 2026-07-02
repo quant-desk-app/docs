@@ -1,5 +1,6 @@
 ---
 title: "Security and trust overview for QuantDesk users"
+sidebarTitle: "Security overview"
 description: "Public trust posture for QuantDesk: non-custodial wallet-first signing, server-side session enforcement, and the line between public docs and internal runbooks."
 ---
 

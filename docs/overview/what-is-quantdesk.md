@@ -1,5 +1,6 @@
 ---
 title: "What is QuantDesk? Perp trading terminal for Solana"
+sidebarTitle: "What is QuantDesk?"
 description: "QuantDesk is a non-custodial perpetuals trading terminal on Solana built for serious execution, market context, risk workflows, and developer integration."
 ---
 
