@@ -1,5 +1,6 @@
 ---
 title: "Order entry basics: market, limit, and stop orders"
+sidebarTitle: "Order entry"
 description: "How to place market, limit, and stop orders on QuantDesk: confirm side, size, leverage, liquidation, spread, and depth before submitting each trade."
 ---
 

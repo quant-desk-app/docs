@@ -1,5 +1,6 @@
 ---
 title: "Data sources"
+sidebarTitle: "Data sources"
 description: "Canonical upstream sources for QuantDesk market stats, candles, trades, news, and reference context."
 ---
 

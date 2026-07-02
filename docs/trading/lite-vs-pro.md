@@ -1,5 +1,6 @@
 ---
 title: "Lite vs Pro terminal: choosing the right mode"
+sidebarTitle: "Lite vs Pro"
 description: "Compare QuantDesk Lite and Pro terminal modes by workflow depth, visual complexity, and session intent to pick the right surface for your trading style."
 ---
 

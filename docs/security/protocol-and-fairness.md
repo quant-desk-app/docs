@@ -1,5 +1,6 @@
 ---
 title: "Protocol fairness, oracle health, and V2 invariants"
+sidebarTitle: "Protocol fairness"
 description: "Public trust layer for QuantDesk V2 covering non-custodial signing, oracle health checks, the 100bps social slippage band, and fair execution posture."
 ---
 

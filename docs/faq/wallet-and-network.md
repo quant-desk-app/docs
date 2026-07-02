@@ -1,5 +1,6 @@
 ---
 title: "Wallet and network FAQ: devnet, mainnet, clusters"
+sidebarTitle: "Wallet & network"
 description: "Answers for connecting Solana wallets to QuantDesk safely, choosing devnet versus mainnet, troubleshooting loads, and matching wallet cluster to environment."
 ---
 

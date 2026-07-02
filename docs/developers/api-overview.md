@@ -1,5 +1,6 @@
 ---
 title: "QuantDesk API overview and integration funnel"
+sidebarTitle: "API overview"
 description: "Integration guidance for the QuantDesk V2 backend gateway with Swagger as schema truth, base URLs, retry posture, and the recommended developer funnel."
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Terminal keyboard shortcuts for fast execution"
+sidebarTitle: "Shortcuts"
 description: "Suggested keyboard shortcuts for the QuantDesk terminal to focus panels, open order tickets, cancel orders safely, and toggle between Lite and Pro views."
 ---
 

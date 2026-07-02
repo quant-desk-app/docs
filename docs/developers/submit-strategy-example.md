@@ -1,5 +1,6 @@
 ---
 title: "Contributing: submit a strategy example"
+sidebarTitle: "Contributing"
 description: "How external quants and developers contribute custom strategy scripts to the public QuantDesk examples/ workspace, and the code-quality rules (TypeScript linting, secret scanning) every contribution must pass."
 ---
 

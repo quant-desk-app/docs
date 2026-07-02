@@ -1,13 +1,24 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "luma",
   "name": "QuantDesk Docs",
   "colors": {
-    "primary": "#b7ff2a",
-    "light": "#45c0ff",
-    "dark": "#9fec16"
+    "primary": "#8fbf1f",
+    "light": "#b7ff2a",
+    "dark": "#b7ff2a"
   },
   "favicon": "/logo.svg",
+  "appearance": {
+    "default": "system"
+  },
+  "styling": {
+    "codeblocks": {
+      "theme": {
+        "light": "github-light",
+        "dark": "dracula"
+      }
+    }
+  },
   "redirects": [
     {
       "source": "/docs/community/contributing",
@@ -17,101 +28,137 @@
   "navbar": {
     "links": [
       {
-        "label": "App",
-        "href": "https://quantdesk.app"
+        "label": "Support",
+        "href": "/docs/faq"
       },
       {
         "type": "github",
         "href": "https://github.com/quant-desk-app/quantdesk-sdk"
       }
-    ]
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Launch App",
+      "href": "https://quantdesk.app"
+    }
   },
   "navigation": {
-    "groups": [
+    "global": {
+      "anchors": [
+        {
+          "anchor": "App",
+          "icon": "rocket",
+          "href": "https://quantdesk.app"
+        },
+        {
+          "anchor": "SDK",
+          "icon": "code",
+          "href": "https://github.com/quant-desk-app/quantdesk-sdk"
+        },
+        {
+          "anchor": "Contributing",
+          "icon": "hand-wave",
+          "href": "/docs/developers/submit-strategy-example"
+        }
+      ]
+    },
+    "tabs": [
       {
-        "group": "Product & guides",
-        "pages": [
+        "tab": "Guides",
+        "groups": [
           {
-            "group": "Overview",
-            "expanded": true,
+            "group": "Product & guides",
             "pages": [
-              "docs/intro",
-              "docs/overview/sdk-architecture-tour",
-              "docs/overview/what-is-quantdesk",
-              "docs/overview/unified-portfolio",
-              "docs/overview/features-and-tools",
-              "docs/overview/visual-product-tour",
-              "docs/overview/why-quantdesk",
-              "docs/overview/uniques-and-roadmap",
-              "docs/overview/docs-philosophy"
-            ]
-          },
-          {
-            "group": "Getting started",
-            "expanded": true,
-            "pages": [
-              "docs/getting-started/start-trading-in-5-minutes"
-            ]
-          },
-          {
-            "group": "Trading Terminal",
-            "expanded": false,
-            "pages": [
-              "docs/trading/overview",
-              "docs/trading/perp-market-coverage",
-              "docs/trading/lite-vs-pro",
-              "docs/trading/order-entry",
-              "docs/trading/order-book",
-              "docs/trading/terminal-shortcuts"
-            ]
-          },
-          {
-            "group": "Data Plane",
-            "expanded": false,
-            "pages": [
-              "docs/data/overview",
-              "docs/data/data-sources",
-              "docs/data/refresh-rates"
-            ]
-          },
-          {
-            "group": "Social Surfaces",
-            "expanded": false,
-            "pages": [
-              "docs/social/overview",
-              "docs/social/verified-flex-charter",
-              "docs/social/proof-badges",
-              "docs/social/x-stream",
-              "docs/social/copy-trading",
-              "docs/social/strategy-collaboration"
-            ]
-          },
-          {
-            "group": "Security and trust",
-            "expanded": false,
-            "pages": [
-              "docs/security/overview",
-              "docs/security/protocol-and-fairness",
-              "docs/security/fees-and-fairness"
-            ]
-          },
-          {
-            "group": "FAQ",
-            "expanded": false,
-            "pages": [
-              "docs/faq/index",
-              "docs/faq/wallet-and-network",
-              "docs/faq/orders-risk-and-fees"
+              {
+                "group": "Overview",
+                "icon": "compass",
+                "pages": [
+                  "docs/intro",
+                  "docs/overview/sdk-architecture-tour",
+                  "docs/overview/what-is-quantdesk",
+                  "docs/overview/unified-portfolio",
+                  "docs/overview/features-and-tools",
+                  "docs/overview/visual-product-tour",
+                  "docs/overview/why-quantdesk",
+                  "docs/overview/uniques-and-roadmap",
+                  "docs/overview/docs-philosophy"
+                ]
+              },
+              {
+                "group": "Getting started",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "docs/getting-started/start-trading-in-5-minutes"
+                ]
+              },
+              {
+                "group": "Trading Terminal",
+                "icon": "chart-line",
+                "expanded": false,
+                "pages": [
+                  "docs/trading/overview",
+                  "docs/trading/perp-market-coverage",
+                  "docs/trading/lite-vs-pro",
+                  "docs/trading/order-entry",
+                  "docs/trading/order-book",
+                  "docs/trading/terminal-shortcuts"
+                ]
+              },
+              {
+                "group": "Data Plane",
+                "icon": "database",
+                "expanded": false,
+                "pages": [
+                  "docs/data/overview",
+                  "docs/data/data-sources",
+                  "docs/data/refresh-rates"
+                ]
+              },
+              {
+                "group": "Social Surfaces",
+                "icon": "users",
+                "expanded": false,
+                "pages": [
+                  "docs/social/overview",
+                  "docs/social/verified-flex-charter",
+                  "docs/social/proof-badges",
+                  "docs/social/x-stream",
+                  "docs/social/copy-trading",
+                  "docs/social/strategy-collaboration"
+                ]
+              },
+              {
+                "group": "Security and trust",
+                "icon": "shield-check",
+                "expanded": false,
+                "pages": [
+                  "docs/security/overview",
+                  "docs/security/protocol-and-fairness",
+                  "docs/security/fees-and-fairness"
+                ]
+              },
+              {
+                "group": "FAQ",
+                "icon": "circle-question",
+                "expanded": true,
+                "pages": [
+                  "docs/faq/index",
+                  "docs/faq/wallet-and-network",
+                  "docs/faq/orders-risk-and-fees"
+                ]
+              }
             ]
           }
         ]
       },
       {
-        "group": "Developers",
-        "pages": [
+        "tab": "Developers",
+        "groups": [
           {
             "group": "SDK & APIs",
-            "expanded": false,
+            "icon": "code",
+            "expanded": true,
             "pages": [
               "docs/developers/quickstart",
               "docs/developers/portfolio-parsing",
@@ -121,6 +168,104 @@
               "docs/developers/api-overview",
               "docs/developers/websocket-overview",
               "docs/developers/errors-and-rate-limits"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "openapi": "openapi.json",
+        "groups": [
+          {
+            "group": "API documentation",
+            "icon": "book-open",
+            "expanded": true,
+            "pages": [
+              "docs/api-reference/introduction"
+            ]
+          },
+          {
+            "group": "Markets",
+            "icon": "chart-line",
+            "expanded": true,
+            "pages": [
+              "GET /api/v2/markets",
+              "GET /api/v2/markets/{symbol}",
+              "GET /api/v2/markets/leverage-tiers",
+              "GET /api/v2/markets/orderbook/{market}"
+            ]
+          },
+          {
+            "group": "Oracle",
+            "icon": "gauge-high",
+            "pages": [
+              "GET /api/oracle/prices"
+            ]
+          },
+          {
+            "group": "Portfolio",
+            "icon": "wallet",
+            "pages": [
+              "GET /api/v2/portfolio",
+              "GET /api/v2/portfolio/positions",
+              "GET /api/v2/portfolio/orders"
+            ]
+          },
+          {
+            "group": "Data",
+            "icon": "database",
+            "pages": [
+              "GET /api/v2/market-stats",
+              "GET /api/v2/candles"
+            ]
+          },
+          {
+            "group": "Social",
+            "icon": "users",
+            "pages": [
+              "GET /api/v2/leaderboard",
+              "POST /api/v2/social/flex-cards",
+              "GET /api/v2/social/flex-cards/{flex_card_id}"
+            ]
+          },
+          {
+            "group": "Backtesting",
+            "icon": "flask",
+            "pages": [
+              "GET /api/v2/backtest/datasets",
+              "POST /api/v2/backtest/runs",
+              "GET /api/v2/backtest/runs/{id}"
+            ]
+          },
+          {
+            "group": "Referrals",
+            "icon": "share-nodes",
+            "pages": [
+              "POST /api/v2/referrals/validate"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Resources",
+        "groups": [
+          {
+            "group": "Changelog",
+            "icon": "clock-rotate-left",
+            "expanded": true,
+            "pages": [
+              "docs/changelog/2026-07-13",
+              "docs/changelog/2026-07-06",
+              "docs/changelog/2026-06-29",
+              "docs/changelog/2026-06-26",
+              "docs/changelog/2026-06-24",
+              "docs/changelog/2026-06-23",
+              "docs/changelog/2026-06-22",
+              "docs/changelog/2026-06-15",
+              "docs/changelog/2026-06-08",
+              "docs/changelog/2026-06-05",
+              "docs/changelog/2026-06-01",
+              "docs/changelog/2026-05-30"
             ]
           }
         ]

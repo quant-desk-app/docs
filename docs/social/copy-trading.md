@@ -1,5 +1,6 @@
 ---
 title: "Copy trading on QuantDesk: intent, risks, scope"
+sidebarTitle: "Copy trading"
 description: "Directional design for QuantDesk copy trading: consent-based mirroring with size caps, pause controls, and transparent slippage and latency disclosure."
 ---
 

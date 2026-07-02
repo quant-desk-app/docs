@@ -1,5 +1,6 @@
 ---
 title: "Why QuantDesk: principles behind the platform"
+sidebarTitle: "Why QuantDesk"
 description: "Core values driving QuantDesk: terminal-grade execution, honest scope labels, non-custodial wallet flow, and first-class developer APIs for builders."
 ---
 

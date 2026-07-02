@@ -1,5 +1,6 @@
 ---
 title: "X stream and social alerts"
+sidebarTitle: "X stream"
 description: "How QuantDesk ingests X/Twitter posts, emits symbol-linked alerts, and exposes the feed to Lite, Pro, and agent tools without sharing API credentials."
 ---
 

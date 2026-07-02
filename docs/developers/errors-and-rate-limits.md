@@ -1,5 +1,6 @@
 ---
 title: "API errors, status codes, and rate limit guidance"
+sidebarTitle: "Errors & rate limits"
 description: "HTTP status codes, V2 hardened error codes like SlippageExceeded and PriceStale, and tiered rate limit guidance for integrating with the QuantDesk gateway."
 ---
 
