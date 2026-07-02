@@ -248,25 +248,76 @@
       },
       {
         "tab": "Resources",
-        "groups": [
+        "menu": [
           {
-            "group": "Changelog",
+            "item": "Changelog",
             "icon": "clock-rotate-left",
-            "expanded": true,
-            "pages": [
-              "docs/changelog/2026-07-13",
-              "docs/changelog/2026-07-06",
-              "docs/changelog/2026-06-29",
-              "docs/changelog/2026-06-26",
-              "docs/changelog/2026-06-24",
-              "docs/changelog/2026-06-23",
-              "docs/changelog/2026-06-22",
-              "docs/changelog/2026-06-15",
-              "docs/changelog/2026-06-08",
-              "docs/changelog/2026-06-05",
-              "docs/changelog/2026-06-01",
-              "docs/changelog/2026-05-30"
+            "description": "Weekly release notes and shipped improvements",
+            "groups": [
+              {
+                "group": "Changelog",
+                "icon": "clock-rotate-left",
+                "expanded": true,
+                "pages": [
+                  "docs/changelog/2026-07-13",
+                  "docs/changelog/2026-07-06",
+                  "docs/changelog/2026-06-29",
+                  "docs/changelog/2026-06-26",
+                  "docs/changelog/2026-06-24",
+                  "docs/changelog/2026-06-23",
+                  "docs/changelog/2026-06-22",
+                  "docs/changelog/2026-06-15",
+                  "docs/changelog/2026-06-08",
+                  "docs/changelog/2026-06-05",
+                  "docs/changelog/2026-06-01",
+                  "docs/changelog/2026-05-30"
+                ]
+              }
             ]
+          },
+          {
+            "item": "Blog",
+            "icon": "newspaper",
+            "description": "Insights, tutorials, and build logs",
+            "pages": [
+              "docs/resources/blog"
+            ]
+          },
+          {
+            "item": "Careers",
+            "icon": "briefcase",
+            "description": "Help build the terminal — future roles",
+            "pages": [
+              "docs/resources/careers"
+            ]
+          },
+          {
+            "item": "Community",
+            "icon": "users",
+            "description": "X, GitHub, and chat channels",
+            "pages": [
+              "docs/resources/community"
+            ]
+          },
+          {
+            "item": "Brand kit",
+            "icon": "palette",
+            "description": "Logos, colors, and usage guidelines",
+            "pages": [
+              "docs/resources/brand-kit"
+            ]
+          },
+          {
+            "item": "SDK on GitHub",
+            "icon": "github",
+            "description": "Public TypeScript SDK, examples, and IDL",
+            "href": "https://github.com/quant-desk-app/quantdesk-sdk"
+          },
+          {
+            "item": "Launch app",
+            "icon": "rocket",
+            "description": "Open the QuantDesk trading terminal",
+            "href": "https://quantdesk.app"
           }
         ]
       }
