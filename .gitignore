@@ -1,0 +1,8 @@
+# Dependencies
+node_modules/
+
+# Local cache
+.mintlify/
+
+# OS files
+.DS_Store

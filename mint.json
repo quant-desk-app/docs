@@ -1,0 +1,99 @@
+{
+  "$schema": "https://mintlify.com/schema.json",
+  "name": "QuantDesk Docs",
+  "theme": "prism",
+  "favicon": "/logo.svg",
+  "colors": {
+    "primary": "#b7ff2a",
+    "light": "#45c0ff",
+    "dark": "#9fec16"
+  },
+  "navigation": [
+    {
+      "group": "Overview",
+      "pages": [
+        "docs/intro",
+        "docs/overview/what-is-quantdesk",
+        "docs/overview/unified-portfolio",
+        "docs/overview/features-and-tools",
+        "docs/overview/visual-product-tour",
+        "docs/overview/why-quantdesk",
+        "docs/overview/uniques-and-roadmap",
+        "docs/overview/docs-philosophy"
+      ]
+    },
+    {
+      "group": "Getting started",
+      "pages": ["docs/getting-started/start-trading-in-5-minutes"]
+    },
+    {
+      "group": "Trading",
+      "pages": [
+        "docs/trading/overview",
+        "docs/trading/perp-market-coverage",
+        "docs/trading/lite-vs-pro",
+        "docs/trading/order-entry",
+        "docs/trading/order-book",
+        "docs/trading/terminal-shortcuts"
+      ]
+    },
+    {
+      "group": "Data",
+      "pages": [
+        "docs/data/overview",
+        "docs/data/data-sources",
+        "docs/data/refresh-rates"
+      ]
+    },
+    {
+      "group": "Social",
+      "pages": [
+        "docs/social/overview",
+        "docs/social/x-stream",
+        "docs/social/verified-flex-charter",
+        "docs/social/proof-badges",
+        "docs/social/copy-trading",
+        "docs/social/strategy-collaboration"
+      ]
+    },
+    {
+      "group": "Developers",
+      "pages": [
+        "docs/developers/quickstart",
+        "docs/developers/portfolio-parsing",
+        "docs/developers/authentication",
+        "docs/developers/api-overview",
+        "docs/developers/websocket-overview",
+        "docs/developers/errors-and-rate-limits"
+      ]
+    },
+    {
+      "group": "Security and trust",
+      "pages": [
+        "docs/security/overview",
+        "docs/security/protocol-and-fairness",
+        "docs/security/fees-and-fairness"
+      ]
+    },
+    {
+      "group": "FAQ",
+      "pages": [
+        "docs/faq/index",
+        "docs/faq/wallet-and-network",
+        "docs/faq/orders-risk-and-fees"
+      ]
+    }
+  ],
+  "navbar": {
+    "links": [
+      {
+        "label": "App",
+        "href": "https://quantdesk.app"
+      },
+      {
+        "label": "GitHub",
+        "href": "https://github.com/dextrorsal/quantdesk"
+      }
+    ]
+  }
+}

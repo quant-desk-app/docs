@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="QuantDesk logo">
+  <rect width="128" height="128" rx="20" fill="#0a0f16" />
+  <path d="M26 92V36h20l14 22 14-22h20v56H76V66L60 90 44 66v26H26z" fill="#ecf2ff" />
+  <circle cx="102" cy="26" r="8" fill="#b7ff2a" />
+</svg>
