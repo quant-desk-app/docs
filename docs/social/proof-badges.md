@@ -1,5 +1,6 @@
 ---
 title: "Proof badges glossary (BACKTEST_VERIFIED · LIVE_TRACKED)"
+sidebarTitle: "Proof badges"
 description: "Server-verified badge definitions for flex cards and the strategy leaderboard — what each label means and what it does not imply."
 ---
 

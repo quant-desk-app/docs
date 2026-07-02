@@ -1,5 +1,6 @@
 ---
 title: "Refresh rates and SLOs"
+sidebarTitle: "Refresh rates"
 description: "Expected update cadence, websocket behavior, and stale-data thresholds for QuantDesk data surfaces."
 ---
 

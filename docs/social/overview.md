@@ -1,5 +1,6 @@
 ---
 title: "Social features overview and shipped status labels"
+sidebarTitle: "Social overview"
 description: "Overview of QuantDesk social features with explicit shipped, prototype, and roadmap labels covering strategy collaboration and shared trading context."
 ---
 

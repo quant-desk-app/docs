@@ -1,5 +1,6 @@
 ---
 title: "Visual product tour of the QuantDesk terminal"
+sidebarTitle: "Visual tour"
 description: "Screenshots and placeholder frames showing the QuantDesk Pro terminal, Lite mode, order book panel, and Swagger UI for the developer gateway."
 ---
 

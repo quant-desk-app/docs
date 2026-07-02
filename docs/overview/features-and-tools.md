@@ -1,5 +1,6 @@
 ---
 title: "QuantDesk features and tools capability map"
+sidebarTitle: "Features and tools"
 description: "Capability map across the QuantDesk trading terminal, gateway APIs, auth model, market data, and social tooling, with shipped versus roadmap status labels."
 ---
 

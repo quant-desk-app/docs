@@ -1,5 +1,6 @@
 ---
 title: "Trading overview: Lite and Pro modes on QuantDesk"
+sidebarTitle: "Trading overview"
 description: "Introduction to QuantDesk trading on the V2 unified zero-copy portfolio, with Lite mode for quick monitoring and Pro mode for active execution workflows."
 ---
 

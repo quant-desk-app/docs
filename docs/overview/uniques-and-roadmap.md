@@ -1,5 +1,6 @@
 ---
 title: "QuantDesk uniques and product roadmap status"
+sidebarTitle: "Roadmap"
 description: "What is live in QuantDesk today versus prototype and roadmap items, plus the docs reality policy for labeling shipped, prototype, and planned features."
 ---
 

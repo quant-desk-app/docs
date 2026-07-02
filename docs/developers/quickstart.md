@@ -1,5 +1,6 @@
 ---
 title: "Developer quickstart: health, Swagger, first curl"
+sidebarTitle: "Quickstart"
 description: "Five-minute QuantDesk gateway integration: verify health, open Swagger at /api/docs, set QD_API, and make your first authenticated curl request locally."
 ---
 

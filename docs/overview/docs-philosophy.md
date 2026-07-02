@@ -1,5 +1,6 @@
 ---
 title: "QuantDesk docs philosophy and scope policy"
+sidebarTitle: "Docs philosophy"
 description: "How QuantDesk documentation separates public usage and integration guides from internal engineering runbooks, with Swagger as the source of API truth."
 ---
 

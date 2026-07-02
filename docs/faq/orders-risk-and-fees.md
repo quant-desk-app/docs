@@ -1,5 +1,6 @@
 ---
 title: "Orders, risk, and fees FAQ for QuantDesk traders"
+sidebarTitle: "Orders & risk"
 description: "Answers on market order slippage, liquidation risk drivers, in-app fee displays, and recovering stuck orders when trading perps on the QuantDesk terminal."
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: "Parsing the PortfolioAccount zero-copy buffer"
+sidebarTitle: "Portfolio parsing"
 description: "How to decode the QuantDesk V2 PortfolioAccount zero-copy buffer using Anchor in TypeScript to read balances, positions, and open orders with sub-ms latency."
 ---
 

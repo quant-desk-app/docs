@@ -1,5 +1,6 @@
 ---
 title: "Data plane overview"
+sidebarTitle: "Data overview"
 description: "How QuantDesk normalizes market, trade, candle, news, and reference data into one backend-facing data plane."
 ---
 

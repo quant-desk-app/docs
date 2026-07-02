@@ -1,5 +1,6 @@
 ---
 title: "SDK architecture tour: what's in the public repo"
+sidebarTitle: "SDK tour"
 description: "A guided tour of the public QuantDesk SDK repository — the idl/, scripts/, typescript/, and examples/ directories — so you know exactly what each part is for before you build."
 ---
 

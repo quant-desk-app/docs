@@ -1,5 +1,6 @@
 ---
 title: "Reading the order book: spread, depth, imbalance"
+sidebarTitle: "Order book"
 description: "How to read the QuantDesk order book for execution context: watch spread, near depth, and imbalance, and stage entries when liquidity is thin."
 ---
 

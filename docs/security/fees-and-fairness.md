@@ -1,5 +1,6 @@
 ---
 title: "Fees and fairness: trading, funding, and network"
+sidebarTitle: "Fees and fairness"
 description: "How QuantDesk presents trading fees, perpetual funding, and Solana network costs honestly in the product, with Swagger as the source for programmatic constants."
 ---
 

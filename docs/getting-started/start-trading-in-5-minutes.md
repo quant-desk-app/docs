@@ -1,5 +1,6 @@
 ---
 title: "Start trading on QuantDesk in 5 minutes locally"
+sidebarTitle: "Start in 5 minutes"
 description: "Quick local setup for QuantDesk: clone the repo, install dependencies, start frontend, backend, and AI services, connect a wallet, and trade on devnet."
 ---
 

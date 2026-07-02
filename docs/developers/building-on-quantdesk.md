@@ -1,5 +1,6 @@
 ---
 title: "Building on QuantDesk: place_order_v2 tutorial"
+sidebarTitle: "Building on QuantDesk"
 description: "Step-by-step integrator guide for V2 atomic trading with place_order_v2, MarketSeat claims, and PortfolioAccount prerequisites."
 ---
 

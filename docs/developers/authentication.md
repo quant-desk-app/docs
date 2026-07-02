@@ -1,5 +1,6 @@
 ---
 title: "Authentication: wallet SIWS and API bearer tokens"
+sidebarTitle: "Authentication"
 description: "How QuantDesk separates browser wallet sign-in with SIWS from programmatic API access using bearer tokens, with Swagger as the per-route auth source of truth."
 ---
 

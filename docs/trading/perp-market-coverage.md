@@ -1,5 +1,6 @@
 ---
 title: "Perpetual market coverage"
+sidebarTitle: "Market coverage"
 description: "QuantDesk V2 synthetic perp markets — asset classes, leverage caps, listing policy, and v1 scope boundaries. Solana-native clearing only; no CFD or MT5."
 ---
 

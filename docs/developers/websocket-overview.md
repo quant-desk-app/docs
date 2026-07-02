@@ -1,5 +1,6 @@
 ---
 title: "WebSockets overview: Socket.IO streaming updates"
+sidebarTitle: "WebSockets"
 description: "How QuantDesk streams market, order, and position updates over Socket.IO, with connection hygiene, backoff guidance, and reconciliation tips against REST."
 ---
 

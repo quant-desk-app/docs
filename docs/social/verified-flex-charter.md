@@ -1,5 +1,6 @@
 ---
 title: "Verified flex cards — proof charter"
+sidebarTitle: "Verified flex"
 description: "How QuantDesk flex cards link gate-verified backtest runs to shareable proof, what each badge means, and honest limitations (backtest ≠ future live performance)."
 ---
 
