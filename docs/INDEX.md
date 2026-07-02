@@ -75,13 +75,4 @@
 
 ---
 
-## Internal cross-links (repo only)
-
-| Resource | Path |
-| --- | --- |
-| Migration tracker | `docs/specs/KEY_DOCS_MIGRATION_TRACKER.md` |
-| URL map | `docs/specs/DOCS_URL_MAP.md` |
-| PRD (active) | `_bmad-output/planning-artifacts/prds/prd-quantdesk-2026-05-25/prd.md` |
-| Agent context | `_bmad-output/project-context.md` |
-
-_Generated 2026-06-26 — use `pnpm run build:docs` (Node 22) to validate._
+_Validate locally with `npx mintlify dev` (Node 22)._

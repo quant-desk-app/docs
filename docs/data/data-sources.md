@@ -11,12 +11,12 @@ QuantDesk uses a **source matrix** so each data class has a documented upstream 
 
 | Data class | Primary source | Ingestion service | Hub table | Public consumers |
 | --- | --- | --- | --- | --- |
-| Mark / tick prices | Pyth-backed collectors | `data-ingestion` | `hub_market_stats`, `hub_candles` | Heatmap, ticker tape, chart API |
-| On-chain fills | QuantDesk `place_order_v2` logs | `data-ingestion` | `hub_trades`, `hub_market_stats` | Trade tape, rolling 24h volume rollups |
-| OI / funding / reference marks | Coinalyze, Hyperliquid | `data-ingestion` | `hub_reference_perps` | Reference badges, operator context |
-| News articles | RSS, NewsData, CryptoPanic | `news-ingestion` | `hub_news` | News panels, symbol-linked context |
-| X posts and alerts | X/Twitter API or dev-mode sample feed | `x-stream` | `x_posts`, `x_alerts` | Social feed, alert list, agent X context |
-| Session metadata | TradFi session policy | `backend` enrichment | `hub_market_stats.cash_open` | US500 / US100 session badge |
+| Mark / tick prices | Pyth-backed collectors | Market Data Ingestion Pipeline | `hub_market_stats`, `hub_candles` | Heatmap, ticker tape, chart API |
+| On-chain fills | QuantDesk `place_order_v2` logs | Market Data Ingestion Pipeline | `hub_trades`, `hub_market_stats` | Trade tape, rolling 24h volume rollups |
+| OI / funding / reference marks | Coinalyze, Hyperliquid | Market Data Ingestion Pipeline | `hub_reference_perps` | Reference badges, operator context |
+| News articles | RSS, NewsData, CryptoPanic | Sentiment Feed Aggregator | `hub_news` | News panels, symbol-linked context |
+| X posts and alerts | X/Twitter API or dev-mode sample feed | Social Stream Ingestion Matrix | `x_posts`, `x_alerts` | Social feed, alert list, agent X context |
+| Session metadata | TradFi session policy | Gateway enrichment | `hub_market_stats.cash_open` | US500 / US100 session badge |
 | Dataset exports | Hub candles + catalog metadata | `scripts/data` | `backtest_datasets` | Strategy backtests and reproducibility checks |
 
 ## Symbol handling

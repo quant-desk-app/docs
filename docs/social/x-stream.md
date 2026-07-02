@@ -5,11 +5,11 @@ description: "How QuantDesk ingests X/Twitter posts, emits symbol-linked alerts,
 
 # X stream and social alerts
 
-QuantDesk runs a dedicated **`x-stream`** service for X/Twitter ingestion. It is separate from both `data-ingestion` and `news-ingestion`.
+QuantDesk runs a dedicated **Social Stream Ingestion Matrix** for X/Twitter ingestion. It is separate from both the Market Data Ingestion Pipeline and the Sentiment Feed Aggregator.
 
 ## Status
 
-- **Shipped**: dedicated `x-stream/` service, backend `/api/v2/x/*` routes, alert fanout, terminal windows, and an agent context tool
+- **Shipped**: dedicated Social Stream Ingestion Matrix, backend `/api/v2/x/*` routes, alert fanout, terminal windows, and an agent context tool
 - **Dev sample mode**: when `TWITTER_BEARER_TOKEN` is unset in non-production, env-gated sample posts (not live KOL firehose)
 - **Not supported**: direct client-side X API access or frontend-held bearer tokens
 
@@ -17,8 +17,8 @@ QuantDesk runs a dedicated **`x-stream`** service for X/Twitter ingestion. It is
 
 | Layer | Responsibility |
 | --- | --- |
-| `x-stream/` | Poll or stream watched accounts, normalize posts, derive alert events |
-| `backend/` | Persist recent posts/alerts, expose `/api/v2/x/*`, fan out websocket events |
+| Social Stream Ingestion Matrix | Poll or stream watched accounts, normalize posts, derive alert events |
+| Gateway API | Persist recent posts/alerts, expose `/api/v2/x/*`, fan out websocket events |
 | Lite / Pro / agent tools | Read the normalized feed and alert cache only |
 
 ## Normalized post shape
@@ -69,7 +69,7 @@ Each alert includes `severity`, `linked_symbols`, `lists`, and the original `pos
 
 - QuantDesk treats X as a **licensed upstream** with rate and ToS limits.
 - Frontend clients and agent tools do **not** call X directly.
-- `TWITTER_BEARER_TOKEN` is owned by `x-stream` only.
+- `TWITTER_BEARER_TOKEN` is owned by the Social Stream Ingestion Matrix only.
 - Development mode may serve env-gated sample posts when no bearer token is configured.
 
 ## Related
