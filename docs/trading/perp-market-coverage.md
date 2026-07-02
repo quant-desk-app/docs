@@ -77,7 +77,7 @@ All fills settle through **`place_order_v2`** and the unified `PortfolioAccount`
 
 ## Verify before release
 
-Engineers run the [Epic 14 market smoke checklist](https://github.com/dextrorsal/quantdesk/blob/main/docs/development/testing/EPIC_14_DEVNET_MARKET_SMOKE_CHECKLIST.md):
+Engineers run the Epic 14 market smoke checklist:
 
 ```bash
 cd contracts && pnpm test:smoke

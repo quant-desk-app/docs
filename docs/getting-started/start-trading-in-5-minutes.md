@@ -10,8 +10,8 @@ Spin up QuantDesk locally and get to a safe first workflow quickly.
 ## Setup
 
 ```bash
-git clone https://github.com/dextrorsal/quantdesk.git
-cd quantdesk
+git clone https://github.com/quant-desk-app/quantdesk-sdk.git
+cd quantdesk-sdk
 pnpm install
 pnpm run dev
 ```

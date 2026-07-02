@@ -95,7 +95,7 @@ Use this only for custom parsers or debugging. Layout matches `contracts/program
 | `TradingPolicy` | 144 | `max_leverage`, `allowed_markets[4]`, `expiry_timestamp` |
 
 > [!TIP]
-> Prefer the latest exported IDL from the [QuantDesk repository](https://github.com/dextrorsal/quantdesk) over manual offsets. Regenerate clients after program upgrades.
+> Prefer the latest exported IDL from the [QuantDesk SDK repository](https://github.com/quant-desk-app/quantdesk-sdk) over manual offsets. Regenerate clients after program upgrades.
 
 ## Related
 

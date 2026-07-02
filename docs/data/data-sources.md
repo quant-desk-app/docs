@@ -55,4 +55,3 @@ Development builds validate the envelope contract before the event is accepted i
 
 - [Data plane overview](./overview)
 - [Refresh rates](./refresh-rates)
-- [`DATA_PLANE_SOURCE_MATRIX_RFC.md`](https://github.com/dextrorsal/quantdesk/blob/main/docs/specs/DATA_PLANE_SOURCE_MATRIX_RFC.md)
