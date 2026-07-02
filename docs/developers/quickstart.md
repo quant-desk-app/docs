@@ -8,68 +8,70 @@ description: "Five-minute QuantDesk gateway integration: verify health, open Swa
 
 Copy-paste these steps with the backend API running and reachable.
 
-## 0) Prerequisite
+<Info>
+  Start the stack from the repo root first — see [Start in 5 minutes](../getting-started/start-trading-in-5-minutes).
+</Info>
 
-Start the stack from the repo root (see [Start in 5 minutes](../getting-started/start-trading-in-5-minutes)). You need a reachable API base URL:
+<Steps>
+  <Step title="Set your API origin">
+    ```bash
+    export QD_API=https://api.quantdesk.app
+    ```
 
-```bash
-export QD_API=https://api.quantdesk.app
-```
+    Point `QD_API` at your own gateway origin if you run the stack yourself (same paths under `/api`).
+  </Step>
 
-Point `QD_API` at your own gateway origin if you run the stack yourself (same paths under `/api`).
+  <Step title="Verify the gateway">
+    ```bash
+    curl -s "$QD_API/health"
+    ```
 
-## 1) Verify the gateway
+    Expect JSON indicating the service is up. If this fails, fix networking or process startup before continuing.
+  </Step>
 
-```bash
-curl -s "$QD_API/health"
-```
+  <Step title="Open interactive API docs">
+    In the browser, open:
 
-Expect JSON indicating the service is up. If this fails, fix networking or process startup before continuing.
+    `$QD_API/api/docs/` — for example `https://api.quantdesk.app/api/docs/`
 
-## 2) Open interactive API docs (schema truth)
+    Use Swagger for **request/response shapes**, parameters, and authentication requirements. This docs site stays narrative-only for HTTP fields.
+  </Step>
 
-In the browser, open:
+  <Step title="Download the OpenAPI document">
+    ```bash
+    curl -s "$QD_API/api/docs/swagger" -o openapi.json
+    jq '.info' openapi.json
+    ```
 
-`$QD_API/api/docs/` — for example `https://api.quantdesk.app/api/docs/`
+    Regenerate `openapi.json` whenever you need an offline reference or codegen input.
+  </Step>
 
-Use Swagger for **request/response shapes**, parameters, and authentication requirements. This docs site stays narrative-only for HTTP fields.
+  <Step title="Make your first API call">
+    Development market overview (useful for integrations and debugging):
 
-## 3) Download the OpenAPI document
+    ```bash
+    curl -s "$QD_API/api/dev/market-summary" | jq .
+    ```
 
-The gateway exposes the machine-readable spec here:
+    You should see `success` and a `data.markets` array when the database and oracle paths are healthy.
+  </Step>
+</Steps>
 
-```bash
-curl -s "$QD_API/api/docs/swagger" -o openapi.json
-```
+## Next steps
 
-Inspect metadata:
-
-```bash
-jq '.info' openapi.json
-```
-
-Regenerate `openapi.json` whenever you need an offline reference or codegen input.
-
-## 4) First API call (no auth)
-
-Development market overview (useful for integrations and debugging):
-
-```bash
-curl -s "$QD_API/api/dev/market-summary" | jq .
-```
-
-You should see `success` and a `data.markets` array when the database and oracle paths are healthy.
-
-## 5) Next steps (Coinbase-style funnel)
-
-| Step | Page |
-| --- | --- |
-| Secure requests | [Authentication](./authentication) |
-| Patterns and boundaries | [API overview](./api-overview) |
-| V2 route reference | [V2 API endpoints](./api-v2) |
-| On-chain trading | [Building on QuantDesk](./building-on-quantdesk) |
-| Streaming updates | [WebSockets overview](./websocket-overview) |
-| Errors and throttling | [Errors and rate limits](./errors-and-rate-limits) |
-| Terminal context | [Trading overview](../trading/overview) |
+<CardGroup cols={2}>
+  <Card title="Authentication" icon="key" href="/docs/developers/authentication">
+    Secure requests with SIWS and bearer tokens.
+  </Card>
+  <Card title="API overview" icon="plug" href="/docs/developers/api-overview">
+    Patterns, boundaries, and integration funnel.
+  </Card>
+  <Card title="Building on QuantDesk" icon="code" href="/docs/developers/building-on-quantdesk">
+    On-chain `place_order_v2` walkthrough.
+  </Card>
+  <Card title="WebSockets" icon="bolt" href="/docs/developers/websocket-overview">
+    Socket.IO streaming updates.
+  </Card>
+</CardGroup>
 
 Do not duplicate full endpoint tables from Swagger into Markdown — link Swagger and keep examples short here.

@@ -10,29 +10,47 @@ QuantDesk separates **human sign-in** (wallet + SIWS in the app) from **programm
 
 ## Browser and app users
 
-- Connect a Solana-compatible wallet and complete **Sign-In With Solana (SIWS)** in the web app.
-- Session handling after verification follows backend policies (for example HTTP-only cookies). Exact cookie names and lifetimes are implementation details — confirm against your deployment and Swagger for any cookie-based routes.
+<Steps>
+  <Step title="Connect your wallet">
+    Use a Solana-compatible wallet supported by the QuantDesk web app.
+  </Step>
+
+  <Step title="Complete Sign-In With Solana (SIWS)">
+  Sign the challenge in the app to prove wallet ownership. Session handling after verification follows backend policies (for example HTTP-only cookies).
+  </Step>
+
+  <Step title="Confirm session for your deployment">
+    Cookie names and lifetimes are implementation details — confirm against your deployment and Swagger for any cookie-based routes.
+  </Step>
+</Steps>
 
 ## API clients
 
-Many routes require an authenticated context. Check **Swagger** for each operation:
+<Steps>
+  <Step title="Check Swagger for the route">
+    Many routes require an authenticated context. Swagger shows whether **Bearer JWT** is required in `Authorization` or whether cookies from an authenticated browser session are expected.
+  </Step>
 
-- Whether **Bearer JWT** is required in `Authorization`
-- Whether cookies from an authenticated browser session are expected
+  <Step title="Attach the bearer token">
+    ```http
+    Authorization: Bearer <your_access_token>
+    ```
 
-Pattern:
+    Obtain tokens only through supported login flows documented for your environment; do not embed secrets in client-side code.
+  </Step>
 
-```http
-Authorization: Bearer <your_access_token>
-```
-
-Obtain tokens only through supported login flows documented for your environment; do not embed secrets in client-side code.
-
-## Practical rule
-
-**Swagger is authoritative** for which endpoints require auth and which headers to send. This page describes the model; Swagger describes the exact contract.
+  <Step title="Treat Swagger as authoritative">
+    This page describes the model; Swagger describes the exact contract for each endpoint.
+  </Step>
+</Steps>
 
 ## Related
 
-- [Developer quickstart](./quickstart)
-- [API overview](./api-overview)
+<CardGroup cols={2}>
+  <Card title="Developer quickstart" icon="rocket" href="/docs/developers/quickstart">
+    Health check, Swagger, and first curl.
+  </Card>
+  <Card title="API overview" icon="plug" href="/docs/developers/api-overview">
+    Endpoint map and integration patterns.
+  </Card>
+</CardGroup>
