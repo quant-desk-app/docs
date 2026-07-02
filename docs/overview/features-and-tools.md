@@ -18,7 +18,7 @@ High-level map of what QuantDesk offers. **Status** reflects how we label capabi
 | **Backtesting** | Dataset catalog and metrics (Sharpe, Sortino, DSR) | Shipped (via API endpoints) |
 | **Unified markets** | Registry SSOT, crypto + index pilots (`US500`/`US100`) | **Shipped** (Epic 14) — [Perp market coverage](../trading/perp-market-coverage) |
 | **Data plane** | Market stats, candles, news, reference feeds, collector health | **Shipped** (Epic 15) — [Data overview](../data/overview) |
-| **X stream** | Social feed + alerts via `x-stream/` | **Shipped** (Epic 16) — [X stream](../social/x-stream) |
+| **Social stream** | Social feed + alerts via the Social Stream Ingestion Matrix | **Shipped** (Epic 16) — [Social stream](../social/x-stream) |
 | **Social & collaboration** | Verified flex cards, proof badges, leaderboard proof fields; copy-trading direction | Flex proof **shipped** (API + in-app); vault copy flows **prototype / roadmap** — [Social](../social/overview) |
 | **Security & trust** | Non-custodial posture, operational security narrative | Shipped (summary) / internal detail in repo |
 

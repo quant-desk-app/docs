@@ -3,5 +3,5 @@
   <rect fill="none" stroke="#334155" stroke-width="2" stroke-dasharray="10 8" x="20" y="20" width="920" height="500" rx="6"/>
   <text x="480" y="248" text-anchor="middle" fill="#94a3b8" font-family="Inter,system-ui,sans-serif" font-size="16">Screenshot placeholder</text>
   <text x="480" y="282" text-anchor="middle" fill="#85ea2d" font-family="Inter,system-ui,sans-serif" font-size="20" font-weight="600">API docs (Swagger UI)</text>
-  <text x="480" y="312" text-anchor="middle" fill="#cbd5e1" font-family="Inter,system-ui,sans-serif" font-size="13">localhost:3002/api/docs  replace with branded capture</text>
+  <text x="480" y="312" text-anchor="middle" fill="#cbd5e1" font-family="Inter,system-ui,sans-serif" font-size="13">api.quantdesk.app/api/docs  replace with branded capture</text>
 </svg>

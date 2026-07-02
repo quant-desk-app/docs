@@ -27,6 +27,6 @@ As these capabilities move from roadmap to shipped, this section will be updated
 
 - [Verified flex charter](./verified-flex-charter) — **Shipped** — gate-verified backtest proof cards on current devnet-oriented/in-app stacks  
 - [Proof badges glossary](./proof-badges) — `BACKTEST_VERIFIED` / `LIVE_TRACKED` definitions  
-- [X stream and alerts](./x-stream) — **Shipped** — dedicated `x-stream/` feed + alert WebSocket  
+- [X stream and alerts](./x-stream) — **Shipped** — dedicated Social Stream Ingestion Matrix feed + alert WebSocket  
 - [Copy trading](./copy-trading) — intent, risks, honest scope (prototype / roadmap)  
 - [Strategy collaboration](./strategy-collaboration) — coordination without hype (prototype / roadmap)

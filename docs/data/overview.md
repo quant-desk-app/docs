@@ -22,13 +22,13 @@ QuantDesk's market data stack is split into three layers:
 
 | Service | Responsibility |
 | --- | --- |
-| `data-ingestion/` | Market marks, candles, protocol trades, reference perps, collector health |
-| `news-ingestion/` | RSS / API article ingestion and entity tagging |
-| `x-stream/` | X/Twitter posts, social alerts, symbol-linked context |
-| `backend/` | Public `/api/v2/*` routes and websocket fanout |
+| Market Data Ingestion Pipeline | Market marks, candles, protocol trades, reference perps, collector health |
+| Sentiment Feed Aggregator | RSS / API article ingestion and entity tagging |
+| Social Stream Ingestion Matrix | X/Twitter posts, social alerts, symbol-linked context |
+| Gateway API | Public `/api/v2/*` routes and websocket fanout |
 
-Article news ownership lives in `news-ingestion/` only; `data-ingestion/` no longer acts as the first-class article collector in the standard dev fleet.
-For local end-to-end verification, the standard `pnpm dev` fleet is expected to bring up `data-ingestion`, `news-ingestion`, and `x-stream` alongside the backend/frontend services.
+Article news ownership lives in the Sentiment Feed Aggregator only; the Market Data Ingestion Pipeline no longer acts as the first-class article collector in the standard local development configuration.
+For local end-to-end verification, the standard Local development configuration is expected to bring up the Market Data Ingestion Pipeline, Sentiment Feed Aggregator, and Social Stream Ingestion Matrix alongside the gateway/frontend services.
 
 ## Public read paths
 
@@ -37,7 +37,7 @@ For local end-to-end verification, the standard `pnpm dev` fleet is expected to 
 | Market stats | `GET /api/v2/market-stats` | 24h stats, OI, last price, cash session badge |
 | Candles | `GET /api/v2/candles` | Historical OHLCV from the hub |
 | News | `GET /api/v2/news` | Tagged articles from `hub_news` |
-| X feed | `GET /api/v2/x/feed` | Normalized posts from `x-stream` |
+| X feed | `GET /api/v2/x/feed` | Normalized posts from the Social Stream Ingestion Matrix |
 | X alerts | `GET /api/v2/x/alerts` | Stored social alert events |
 | Reference perps | `GET /api/v2/reference/perps` | Hyperliquid and Coinalyze context |
 | Data health | `GET /api/v2/data-health` | Collector freshness and stale-market summary |

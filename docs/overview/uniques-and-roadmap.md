@@ -13,7 +13,7 @@ This page intentionally separates what is live now from what is planned. For a f
 - Lite mode for fast sessions + dedicated backtesting tab
 - Backtest → deploy gate → flex publish loop on devnet
 - Unified synthetic perps (crypto + US500/US100 index pilots) on V2
-- Three-service data plane (`data-ingestion`, `news-ingestion`, `x-stream`)
+- Three-service data plane (Market Data Ingestion Pipeline, Sentiment Feed Aggregator, Social Stream Ingestion Matrix)
 - Public docs that prioritize clarity over hype
 - Product story that names the **gap in crypto finance** we target — see [What is QuantDesk?](./what-is-quantdesk)
 
