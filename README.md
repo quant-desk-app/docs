@@ -4,13 +4,10 @@ Public repository hosting the QuantDesk developer portal — content, navigation
 
 ## Structure
 
-- `docs/` — all documentation pages (MDX/Markdown), grouped by section (`overview/`, `developers/`, `trading/`, `data/`, `social/`, `security/`, `faq/`, `changelog/`, `community/`).
-- `docs.json` — modern Mintlify configuration (navigation, theme, colors). Primary config.
-- `mint.json` — legacy Mintlify configuration, kept in sync with `docs.json` for compatibility.
+- `docs/` — all documentation pages (Markdown), grouped by section (`overview/`, `developers/`, `trading/`, `data/`, `social/`, `security/`, `faq/`, `changelog/`).
+- `docs.json` — Mintlify site configuration (navigation, theme, navbar, colors). **Single source of truth.**
 - `images/` — static image assets and placeholders.
 - `logo.svg` — site logo / favicon.
-
-> **Note:** `docs.json` and `mint.json` must stay in sync. When you add, remove, or reorder a page, update the navigation in **both** files.
 
 ## Running locally
 
@@ -23,6 +20,8 @@ npx mintlify dev
 
 This serves the site locally with live reload. Install the CLI globally with `npm i -g mintlify` if you prefer running `mintlify dev` directly.
 
+> **PATH note:** If `node -v` still shows 25+ after `nvm use 22`, prepend the nvm Node 22 bin dir to `PATH` (linuxbrew/homebrew `node` can shadow nvm).
+
 ## Validating navigation
 
 Before opening a PR, confirm there are no broken links or pages missing from navigation:
@@ -30,3 +29,7 @@ Before opening a PR, confirm there are no broken links or pages missing from nav
 ```bash
 npx mintlify broken-links
 ```
+
+## Deployment
+
+The live site at [docs.quantdesk.app](https://docs.quantdesk.app) deploys from this repo's `main` branch via the Mintlify GitHub integration. After merging, confirm the deployment in the [Mintlify dashboard](https://dashboard.mintlify.com) → your project → **Deployments**.
