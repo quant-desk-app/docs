@@ -5,7 +5,7 @@ description: "How QuantDesk flex cards link gate-verified backtest runs to share
 
 # Verified flex charter
 
-**Status:** **Shipped (API + in-app surfaces)** on devnet-oriented stacks with Elena backtest + deploy gate. Flex cards are **not** screenshot exports or marketing claims — they are immutable references to a `run_id` that passed the deploy gate at publish time.
+**Status:** **Shipped (API + in-app surfaces)** on devnet-oriented stacks with the backtest + deploy gate. Flex cards are **not** screenshot exports or marketing claims — they are immutable references to a `run_id` that passed the deploy gate at publish time.
 
 ## What a flex card is
 
@@ -21,10 +21,10 @@ Flex cards exist so affiliates and strategy builders can share **credible contex
 ## Publish path (honest scope)
 
 ```text
-Dataset → Elena backtest run → Deploy gate check → POST flex card → Share deep link
+Dataset → Backtest run → Deploy gate check → POST flex card → Share deep link
 ```
 
-1. Run a backtest via Elena / v2 backtest APIs until status is `completed`.
+1. Run a backtest via the v2 backtest APIs until status is `completed`.
 2. Call deploy gate (`POST /api/v2/backtest/runs/:run_id/deploy-gate/check`). Publishing is **blocked** if the gate fails (`403` with `DEPLOY_GATE_FAILED`).
 3. Authenticated publisher calls `POST /api/v2/social/flex-cards` with `run_id`, `title`, and optional `description`.
 4. Share the returned deep link or Pro/Lite flex surfaces.

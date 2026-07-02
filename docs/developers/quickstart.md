@@ -5,17 +5,17 @@ description: "Five-minute QuantDesk gateway integration: verify health, open Swa
 
 # Developer quickstart
 
-Copy-paste these steps with the backend API running locally (default port **3002**).
+Copy-paste these steps with the backend API running and reachable.
 
 ## 0) Prerequisite
 
 Start the stack from the repo root (see [Start in 5 minutes](../getting-started/start-trading-in-5-minutes)). You need a reachable API base URL:
 
 ```bash
-export QD_API=http://localhost:3002
+export QD_API=https://api.quantdesk.app
 ```
 
-For production or staging, replace `QD_API` with your deployed gateway origin (same paths under `/api`).
+Point `QD_API` at your own gateway origin if you run the stack yourself (same paths under `/api`).
 
 ## 1) Verify the gateway
 
@@ -29,7 +29,7 @@ Expect JSON indicating the service is up. If this fails, fix networking or proce
 
 In the browser, open:
 
-`{QD_API}/api/docs/` — for example `http://localhost:3002/api/docs/`
+`$QD_API/api/docs/` — for example `https://api.quantdesk.app/api/docs/`
 
 Use Swagger for **request/response shapes**, parameters, and authentication requirements. This docs site stays narrative-only for HTTP fields.
 

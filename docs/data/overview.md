@@ -9,7 +9,7 @@ QuantDesk's market data stack is split into three layers:
 
 1. **Collectors** ingest raw market, protocol, and article events.
 2. **The data plane** normalizes those events into a shared envelope and writes authoritative hub tables.
-3. **Backend APIs and websockets** expose the hub to frontend surfaces, Elena backtests, and external clients.
+3. **Backend APIs and websockets** expose the hub to frontend surfaces, backtesting workflows, and external clients.
 
 ## Core principles
 
@@ -20,12 +20,12 @@ QuantDesk's market data stack is split into three layers:
 
 ## Services
 
-| Service | Port | Responsibility |
-| --- | --- | --- |
-| `data-ingestion/` | `3003` | Market marks, candles, protocol trades, reference perps, collector health |
-| `news-ingestion/` | `3007` | RSS / API article ingestion and entity tagging |
-| `x-stream/` | `3008` | X/Twitter posts, social alerts, symbol-linked context |
-| `backend/` | `3002` | Public `/api/v2/*` routes and websocket fanout |
+| Service | Responsibility |
+| --- | --- |
+| `data-ingestion/` | Market marks, candles, protocol trades, reference perps, collector health |
+| `news-ingestion/` | RSS / API article ingestion and entity tagging |
+| `x-stream/` | X/Twitter posts, social alerts, symbol-linked context |
+| `backend/` | Public `/api/v2/*` routes and websocket fanout |
 
 Article news ownership lives in `news-ingestion/` only; `data-ingestion/` no longer acts as the first-class article collector in the standard dev fleet.
 For local end-to-end verification, the standard `pnpm dev` fleet is expected to bring up `data-ingestion`, `news-ingestion`, and `x-stream` alongside the backend/frontend services.
@@ -48,7 +48,7 @@ For local end-to-end verification, the standard `pnpm dev` fleet is expected to 
 Epic 15 removes market-facing mock data from production surfaces and gives every consumer the same canonical input set. That keeps:
 
 - the Lite and Pro terminals aligned,
-- Elena dataset exports reproducible,
+- backtest dataset exports reproducible,
 - TradFi session handling explicit,
 - and collector health observable.
 

@@ -14,6 +14,7 @@
         "group": "Overview",
         "pages": [
           "docs/intro",
+          "docs/overview/sdk-architecture-tour",
           "docs/overview/what-is-quantdesk",
           "docs/overview/unified-portfolio",
           "docs/overview/features-and-tools",
@@ -24,35 +25,42 @@
         ]
       },
       {
+        "group": "Community & Contributing",
+        "pages": [
+          "docs/community/contributing"
+        ]
+      },
+      {
         "group": "Getting started",
         "pages": [
           "docs/getting-started/start-trading-in-5-minutes"
         ]
       },
       {
-        "group": "Trading",
+        "group": "Developers (SDK & APIs)",
+        "pages": [
+          "docs/developers/quickstart",
+          "docs/developers/portfolio-parsing",
+          "docs/developers/building-on-quantdesk",
+          "docs/developers/authentication",
+          "docs/developers/api-overview",
+          "docs/developers/websocket-overview",
+          "docs/developers/errors-and-rate-limits"
+        ]
+      },
+      {
+        "group": "Trading Terminal",
         "pages": [
           "docs/trading/overview",
-          "docs/trading/lite-vs-pro",
           "docs/trading/perp-market-coverage",
+          "docs/trading/lite-vs-pro",
           "docs/trading/order-entry",
           "docs/trading/order-book",
           "docs/trading/terminal-shortcuts"
         ]
       },
       {
-        "group": "Social",
-        "pages": [
-          "docs/social/overview",
-          "docs/social/verified-flex-charter",
-          "docs/social/proof-badges",
-          "docs/social/x-stream",
-          "docs/social/copy-trading",
-          "docs/social/strategy-collaboration"
-        ]
-      },
-      {
-        "group": "Data",
+        "group": "Data Plane",
         "pages": [
           "docs/data/overview",
           "docs/data/data-sources",
@@ -60,17 +68,14 @@
         ]
       },
       {
-        "group": "Developers",
+        "group": "Social Surfaces",
         "pages": [
-          "docs/developers/quickstart",
-          "docs/developers/building-on-quantdesk",
-          "docs/developers/elena-backtesting",
-          "docs/developers/portfolio-parsing",
-          "docs/developers/authentication",
-          "docs/developers/api-overview",
-          "docs/developers/api-v2",
-          "docs/developers/websocket-overview",
-          "docs/developers/errors-and-rate-limits"
+          "docs/social/overview",
+          "docs/social/verified-flex-charter",
+          "docs/social/proof-badges",
+          "docs/social/x-stream",
+          "docs/social/copy-trading",
+          "docs/social/strategy-collaboration"
         ]
       },
       {
@@ -87,23 +92,6 @@
           "docs/faq/index",
           "docs/faq/wallet-and-network",
           "docs/faq/orders-risk-and-fees"
-        ]
-      },
-      {
-        "group": "Changelog",
-        "pages": [
-          "docs/changelog/2026-06-26",
-          "docs/changelog/2026-06-24",
-          "docs/changelog/2026-06-23",
-          "docs/changelog/2026-07-13",
-          "docs/changelog/2026-07-06",
-          "docs/changelog/2026-06-29",
-          "docs/changelog/2026-06-22",
-          "docs/changelog/2026-06-15",
-          "docs/changelog/2026-06-08",
-          "docs/changelog/2026-06-05",
-          "docs/changelog/2026-06-01",
-          "docs/changelog/2026-05-30"
         ]
       }
     ]

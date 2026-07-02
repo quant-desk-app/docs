@@ -29,7 +29,7 @@ Placeholder frames below match QuantDesk terminal styling (dark canvas, neon acc
 
 ![Swagger UI placeholder](/images/placeholders/swagger-ui.svg)
 
-**Caption (edit when real):** Interactive OpenAPI at `/api/docs/` on your gateway (local default port `3002`).
+**Caption (edit when real):** Interactive OpenAPI at `/api/docs/` on your gateway origin.
 
 ## Replacement checklist
 

@@ -11,7 +11,7 @@ QuantDesk's backend gateway exposes a **V2 namespace** for aggregated on-chain s
 
 | Environment | Base URL |
 | --- | --- |
-| Local dev | `http://localhost:3002/api/v2` |
+| Self-hosted / dev | `$QD_API/api/v2` (set `QD_API` to your gateway origin) |
 | Production | `https://api.quantdesk.app/api/v2` |
 
 Legacy `/api/v1` routes are deprecated for new integrations.
@@ -92,17 +92,17 @@ Epic 14 adds registry-driven market discovery. Symbols, oracle feeds, leverage c
 
 See [Perpetual market coverage](../trading/perp-market-coverage).
 
-## Backtest & Elena
+## Backtesting
 
-Epic 12 exposes the backtest lifecycle under `/api/v2/backtest/*`. Elena (`elena-ai/`, port 3006) proxies through `POST /api/elena/chat` — see [Elena & backtesting](./elena-backtesting).
+Exposes the strategy simulation and backtesting lifecycle under `/api/v2/backtest/*` routes.
 
 | Route group | Purpose |
 | --- | --- |
 | `GET /backtest/datasets` | Dataset catalog (`dataset_id`, version) |
-| `POST /backtest/runs` | Submit sim job (fees/slippage/funding required) |
-| `GET /backtest/runs/:id` | Manifest + metrics (incl. DSR) |
-| `POST /backtest/runs/:run_id/deploy-gate/check` | Deploy gate pass/fail |
-| `POST /backtest/compliance/scan` | AST guardrail before queue |
+| `POST /backtest/runs` | Submit simulation job (fees/slippage/funding required) |
+| `GET /backtest/runs/:id` | Run metrics and performance telemetry (incl. DSR) |
+| `POST /backtest/runs/:run_id/deploy-gate/check` | Simulation gate check pass/fail |
+| `POST /backtest/compliance/scan` | Compliance and execution check before queueing |
 
 ## X stream
 
@@ -112,7 +112,7 @@ Epic 16 social ingest — separate from news and market data.
 | --- | --- |
 | `GET /x/feed` | Normalized posts by KOL list |
 | `GET /x/alerts` | Symbol-linked alert events |
-| `GET /x/context` | MIKEY/agent context cache |
+| `GET /x/context` | Social feed and context cache |
 
 See [X stream and social alerts](../social/x-stream).
 

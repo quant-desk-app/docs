@@ -23,7 +23,7 @@ Follow this order once your gateway is running:
 
 ## Base URL
 
-Local development defaults to `http://localhost:3002`. All production and devnet endpoints are now served under the **V2** namespace:
+Set `QD_API` to your gateway origin when running the stack yourself. All production and devnet endpoints are served under the **V2** namespace:
 
 - **V2 API:** `https://api.quantdesk.app/api/v2/`
 - **Legacy V1:** `https://api.quantdesk.app/api/v1/` (Deprecated)

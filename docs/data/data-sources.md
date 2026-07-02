@@ -15,9 +15,9 @@ QuantDesk uses a **source matrix** so each data class has a documented upstream 
 | On-chain fills | QuantDesk `place_order_v2` logs | `data-ingestion` | `hub_trades`, `hub_market_stats` | Trade tape, rolling 24h volume rollups |
 | OI / funding / reference marks | Coinalyze, Hyperliquid | `data-ingestion` | `hub_reference_perps` | Reference badges, operator context |
 | News articles | RSS, NewsData, CryptoPanic | `news-ingestion` | `hub_news` | News panels, symbol-linked context |
-| X posts and alerts | X/Twitter API or dev-mode sample feed | `x-stream` | `x_posts`, `x_alerts` | Social feed, alert list, MIKEY X context |
+| X posts and alerts | X/Twitter API or dev-mode sample feed | `x-stream` | `x_posts`, `x_alerts` | Social feed, alert list, agent X context |
 | Session metadata | TradFi session policy | `backend` enrichment | `hub_market_stats.cash_open` | US500 / US100 session badge |
-| Dataset exports | Hub candles + catalog metadata | `scripts/data` | `backtest_datasets` | Elena backtests and reproducibility checks |
+| Dataset exports | Hub candles + catalog metadata | `scripts/data` | `backtest_datasets` | Strategy backtests and reproducibility checks |
 
 ## Symbol handling
 

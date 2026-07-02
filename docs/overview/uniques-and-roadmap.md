@@ -10,8 +10,8 @@ This page intentionally separates what is live now from what is planned. For a f
 ## Current strengths
 
 - Pro terminal workflow depth (including registry-driven market browser)
-- Lite mode for fast sessions + dedicated Elena tab
-- Elena backtest → deploy gate → flex publish loop on devnet
+- Lite mode for fast sessions + dedicated backtesting tab
+- Backtest → deploy gate → flex publish loop on devnet
 - Unified synthetic perps (crypto + US500/US100 index pilots) on V2
 - Three-service data plane (`data-ingestion`, `news-ingestion`, `x-stream`)
 - Public docs that prioritize clarity over hype

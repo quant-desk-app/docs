@@ -48,7 +48,6 @@
 
 - **[developers/quickstart.md](./developers/quickstart.md)** — Health, Swagger, first curl
 - **[developers/building-on-quantdesk.md](./developers/building-on-quantdesk.md)** — `place_order_v2` tutorial
-- **[developers/elena-backtesting.md](./developers/elena-backtesting.md)** — Elena Conductor + `/api/v2/backtest/*`
 - **[developers/portfolio-parsing.md](./developers/portfolio-parsing.md)** — Zero-copy buffer offsets
 - **[developers/authentication.md](./developers/authentication.md)** — Wallet and API auth
 - **[developers/api-overview.md](./developers/api-overview.md)** — Integration funnel

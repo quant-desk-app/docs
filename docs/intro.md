@@ -38,7 +38,7 @@ Start here:
 - [Developer quickstart](./developers/quickstart) — `curl`, Swagger, first API call  
 - [Authentication](./developers/authentication)  
 - [API overview](./developers/api-overview)  
-- Swagger UI: `http://localhost:3002/api/docs/` locally (same path on your deployed API origin)  
+- Swagger UI: `$QD_API/api/docs/` (set `QD_API` to your gateway origin; same path on your deployed API origin)  
 
 ---
 

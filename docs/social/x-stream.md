@@ -1,15 +1,15 @@
 ---
 title: "X stream and social alerts"
-description: "How QuantDesk ingests X/Twitter posts, emits symbol-linked alerts, and exposes the feed to Lite, Pro, and MIKEY without sharing API credentials."
+description: "How QuantDesk ingests X/Twitter posts, emits symbol-linked alerts, and exposes the feed to Lite, Pro, and agent tools without sharing API credentials."
 ---
 
 # X stream and social alerts
 
-QuantDesk runs a dedicated **`x-stream`** service on port `3008` for X/Twitter ingestion. It is separate from both `data-ingestion` and `news-ingestion`.
+QuantDesk runs a dedicated **`x-stream`** service for X/Twitter ingestion. It is separate from both `data-ingestion` and `news-ingestion`.
 
 ## Status
 
-- **Shipped**: dedicated `x-stream/` service, backend `/api/v2/x/*` routes, alert fanout, terminal windows, MIKEY `get_x_context`
+- **Shipped**: dedicated `x-stream/` service, backend `/api/v2/x/*` routes, alert fanout, terminal windows, and an agent context tool
 - **Dev sample mode**: when `TWITTER_BEARER_TOKEN` is unset in non-production, env-gated sample posts (not live KOL firehose)
 - **Not supported**: direct client-side X API access or frontend-held bearer tokens
 
@@ -19,7 +19,7 @@ QuantDesk runs a dedicated **`x-stream`** service on port `3008` for X/Twitter i
 | --- | --- |
 | `x-stream/` | Poll or stream watched accounts, normalize posts, derive alert events |
 | `backend/` | Persist recent posts/alerts, expose `/api/v2/x/*`, fan out websocket events |
-| Lite / Pro / MIKEY | Read the normalized feed and alert cache only |
+| Lite / Pro / agent tools | Read the normalized feed and alert cache only |
 
 ## Normalized post shape
 
@@ -59,16 +59,16 @@ Each alert includes `severity`, `linked_symbols`, `lists`, and the original `pos
 | --- | --- |
 | Feed snapshot | `GET /api/v2/x/feed` |
 | Alerts snapshot | `GET /api/v2/x/alerts` |
-| MIKEY / agent context | `GET /api/v2/x/context` and backend `get_x_context` tool |
+| Agent context | `GET /api/v2/x/context` and the backend context tool |
 | Correlated UI timeline | Client-side merge of `GET /api/v2/news` and `GET /api/v2/x/feed` |
 | Compatibility timeline | `GET /api/v2/x/timeline` (legacy compatibility only) |
 | Push updates | Socket.IO `x_post` and `x_alert` via dedicated X feed / alert subscriptions |
-| Service health | `GET http://localhost:3008/health` |
+| Service health | `GET /health` on the X stream service origin |
 
 ## API usage and ToS posture
 
 - QuantDesk treats X as a **licensed upstream** with rate and ToS limits.
-- Frontend clients and MIKEY do **not** call X directly.
+- Frontend clients and agent tools do **not** call X directly.
 - `TWITTER_BEARER_TOKEN` is owned by `x-stream` only.
 - Development mode may serve env-gated sample posts when no bearer token is configured.
 
